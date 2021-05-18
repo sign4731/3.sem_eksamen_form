@@ -1,4 +1,52 @@
 @use "../abstracts/vars";
 
 #help_main {
+  margin: 10vh 10vw;
+  //   @media (min-width: 768px) {
+  //     margin: 10vh 10vw;
+  //   }
+  .help_element {
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+  .illustration {
+    width: 80px;
+    height: 30px;
+    @media (min-width: 768px) {
+      width: 130px;
+      height: 80px;
+      margin: auto;
+    }
+    .ill_bg {
+      width: 50px;
+      height: 50px;
+      border-radius: 100px;
+      position: absolute;
+      transform: translate(-18px, -15px);
+      @media (min-width: 768px) {
+        width: 80px;
+        height: 80px;
+      }
+    }
+    .sit_col {
+      background: vars.$yellow;
+    }
+    .order_col {
+      background: vars.$pink;
+    }
+    .wait_col {
+      background: vars.$light_green;
+    }
+    .beer_col {
+      background: vars.$beige;
+    }
+  }
+  img {
+    width: 40px;
+    position: absolute;
+    @media (min-width: 768px) {
+      width: 60px;
+    }
+  }
 }
