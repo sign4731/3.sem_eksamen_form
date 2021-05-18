@@ -1,0 +1,39 @@
+@use "../abstracts/vars";
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Train+One&display=swap");
+
+h1 {
+  font-family: "Train One", cursive;
+  font-size: 50px;
+  line-height: 72px;
+  color: vars.$ui_color_dark;
+  text-transform: uppercase;
+}
+
+h2 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 50px;
+  line-height: 75px;
+  color: vars.$ui_color_dark;
+  text-transform: uppercase;
+}
+
+h3 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 27px;
+  color: vars.$ui_color_dark;
+  text-transform: uppercase;
+}
+p {
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  color: vars.$ui_color_dark;
+}
+label {
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+  color: #666666;
+}
