@@ -1,10 +1,12 @@
 @use "../abstracts/vars";
-
+#help_body {
+  display: flex;
+  justify-content: center;
+}
 #help_main {
-  margin: 10vh 10vw;
-  //   @media (min-width: 768px) {
-  //     margin: 10vh 10vw;
-  //   }
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
   .help_element {
     width: 100%;
     display: flex;
@@ -13,10 +15,14 @@
   .illustration {
     width: 80px;
     height: 30px;
+    display: flex;
+    justify-content: center;
     @media (min-width: 768px) {
       width: 130px;
       height: 80px;
-      margin: auto;
+    }
+    @media (min-width: 1024px) {
+      width: 180px;
     }
     .ill_bg {
       width: 50px;
@@ -47,6 +53,7 @@
     position: absolute;
     @media (min-width: 768px) {
       width: 60px;
+      transform: translate(6px, 12px);
     }
   }
 }
