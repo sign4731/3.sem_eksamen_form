@@ -40,6 +40,12 @@ p {
   font-weight: 300;
   color: vars.$ui_color_dark;
 }
+button {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  color: white;
+  text-transform: uppercase;
+}
 label {
   font-family: "Poppins", sans-serif;
   font-size: 14px;

@@ -1,0 +1,10 @@
+@use "../abstracts/vars";
+
+.logo {
+  position: absolute;
+  width: 80px;
+  height: 67px;
+  right: 30px;
+  top: 20px;
+  background: url(/public/logo_foobar.svg);
+}
