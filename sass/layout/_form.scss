@@ -17,16 +17,34 @@
     input {
       border: 1px solid #eaeaea;
       box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.05);
-      width: 295px;
+      width: 278px;
       height: 35px;
       border-radius: 5px;
       margin: 5px 0 20px;
+      padding: 0 10px;
     }
     .formgroup {
       display: flex;
       input {
-        width: 136px;
+        width: 110px;
       }
     }
+  }
+}
+
+//validation
+
+#form_body {
+  input[type="text"]:valid {
+    outline: none;
+    box-shadow: 0 0 0 1px vars.$dark_green;
+  }
+  input[type="text"]:focus {
+    outline: none;
+    box-shadow: 0 0 0 1px vars.$ui_color_dark;
+  }
+  input::placeholder {
+    // color: #666666;
+    opacity: 0.4;
   }
 }
