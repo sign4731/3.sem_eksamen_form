@@ -1,0 +1,12 @@
+@use "../abstracts/vars";
+
+.pay {
+  // position: absolute;
+  width: 299px;
+  height: 38px;
+  // left: 446px;
+  // top: 589px;
+  background: vars.$ui_color_dark;
+  border-radius: 5px;
+  border: none;
+}

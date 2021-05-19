@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Credit Card Form</title>
   </head>
-  <body>
+  <body id="form_body">
     <div class="back"></div>
     <div class="logo"></div>
     <main>
@@ -20,15 +20,19 @@
         <input type="text" id="cardnumber" name="Cardnumber" required />
 
         <div class="formgroup">
-          <label for="expiry_date">Expiry Date</label>
-          <input type="text" id="expiry_date" name="Expiry Date" required />
+          <div>
+            <label for="expiry_date">Expiry Date</label>
+            <input type="text" id="expiry_date" name="Expiry Date" required />
+          </div>
 
-          <label for="cvv">CVV</label>
-          <input type="text" id="cvv" name="CVV" required />
+          <div>
+            <label for="cvv">CVV</label>
+            <input type="text" id="cvv" name="CVV" required />
+          </div>
         </div>
         <p>Payment amount:</p>
 
-        <button class="pay"></button>
+        <button class="pay">Pay</button>
       </form>
     </main>
     <script type="module" src="/index.js"></script>
