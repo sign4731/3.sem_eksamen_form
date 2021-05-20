@@ -35,6 +35,26 @@ h3 {
     font-size: 18px;
   }
 }
+
+h4 {
+  font-family: "Train One", cursive;
+  font-size: 20px;
+  color: vars.$ui_color_dark;
+  text-transform: uppercase;
+  @media (min-width: 768px) {
+    font-size: 20px;
+  }
+}
+
+.price,
+.total_price {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  color: vars.$ui_color_dark;
+  @media (min-width: 768px) {
+    font-size: 25px;
+  }
+}
 p {
   font-family: "Poppins", sans-serif;
   font-weight: 300;
