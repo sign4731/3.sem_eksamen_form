@@ -1,0 +1,118 @@
+@use "../abstracts/vars";
+
+* {
+  margin: 0;
+}
+
+#beerlist_container {
+  margin-top: 20vh;
+  padding: 0 100px;
+  width: 100vw;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  justify-items: center;
+  grid-gap: 30px;
+
+  .beer_image {
+    max-width: 100%;
+  }
+}
+
+.beer {
+  position: relative;
+}
+
+.beer_circle {
+  //   height: 100px;
+  //   width: 100px;
+  //   background-color: grey;
+  //   position: absolute;
+  //   z-index: -1;
+  //   top: 30%;
+  //   border-radius: 20cm;
+}
+
+.name_price {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media screen and (min-width: 600px) {
+  #beerlist_container {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+
+    .beer_circle {
+      height: 190px;
+      width: 190px;
+      top: 30%;
+    }
+  }
+}
+
+#basket {
+  width: 100vw;
+  position: fixed;
+  overflow-y: scroll;
+  top: 0;
+  bottom: 0;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .added_beers {
+    height: 45vh;
+    overflow-y: scroll;
+  }
+
+  h3 {
+    padding-top: 20px;
+  }
+}
+
+.your_order {
+  padding: 35px 35px 0 35px;
+
+  p {
+    display: flex;
+    justify-content: space-between;
+    border-top: 3px dashed vars.$ui_color_light;
+    padding-top: 10px;
+  }
+}
+
+.payment {
+  padding: 0 35px 35px 35px;
+  .payment_options {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 0;
+  }
+
+  .payment_icon {
+    height: 60px;
+    width: 60px;
+    border-radius: 20cm;
+    border: none;
+    background-color: vars.$ui_color_light;
+    box-shadow: 1px 2px 8px #86868659;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  #basket {
+    width: 30vw;
+    position: fixed;
+    overflow-y: scroll;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  #beerlist_container {
+    width: 70vw;
+  }
+}
