@@ -1,0 +1,65 @@
+@use "../abstracts/vars";
+
+.menubar {
+  width: 100vw;
+  height: 50px;
+  position: absolute;
+  bottom: 0;
+  background: white;
+  border: 1px solid #eaeaea;
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.05);
+  @media (min-width: 768px) {
+    display: none;
+  }
+  img {
+    width: 40px;
+    height: 40px;
+  }
+  .menubar_circle {
+    width: 80px;
+    height: 80px;
+    background-color: white;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
+    position: absolute;
+    border-radius: 50%;
+    left: 50%;
+    bottom: 9px;
+    transform: translate(-50%);
+  }
+  .menubar_box {
+    width: 90px;
+    height: 50px;
+    background-color: white;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translate(-50%);
+  }
+  .home_icon {
+    position: absolute;
+    left: 80%;
+    top: 10%;
+    transform: translate(-50%);
+  }
+  .basket_icon {
+    position: absolute;
+    left: 50%;
+    top: -45%;
+    transform: translate(-50%);
+    border: none;
+    background: none;
+    padding: 0;
+    // opacity: 0.5;
+    img {
+      width: 60px;
+      height: 60px;
+    }
+  }
+  .help_icon {
+    position: absolute;
+    left: 20%;
+    top: 10%;
+    transform: translate(-50%);
+    // opacity: 0.5;
+  }
+}
