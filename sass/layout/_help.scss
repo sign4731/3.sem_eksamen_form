@@ -5,6 +5,12 @@
   background: vars.$bg_color;
   margin: 0;
 }
+.back {
+  display: none;
+  @media (min-width: 768px) {
+    display: block;
+  }
+}
 #help_main {
   position: absolute;
   top: 50%;
