@@ -13,8 +13,23 @@
 
 .basket_pay {
   width: 100%;
-  height: 38px;
+  height: 35px;
   background: vars.$ui_color_dark;
   border-radius: 5px;
   border: none;
+}
+
+.add_beer {
+  width: 55%;
+  max-width: 250px;
+  height: 35px;
+  background: vars.$ui_color_dark;
+  border-radius: 5px;
+  border: none;
+}
+
+.chosen_desc {
+  background-color: vars.$ui_color_dark !important;
+  border-radius: 5px !important;
+  color: vars.$ui_color_light !important;
 }

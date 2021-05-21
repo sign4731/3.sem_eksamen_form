@@ -62,27 +62,30 @@
             <div class="beer_intro">
               <h1 class="sv_beer_name"></h1>
               <p class="description"></p>
+              <p class="sv_alc"></p>
               <p class="sv_price"></p>
-              <div>
-                <button>-</button>
-                <span class="amount"></span>
-                <button>+</button>
+              <div class="beer_amount">
+                <div>
+                  <button class="plus_minus">-</button>
+                  <span class="amount">0</span>
+                  <button class="plus_minus">+</button>
+                </div>
                 <button class="add_beer">Add</button>
               </div>
             </div>
 
             <div class="desc_wrapper">
               <div class="description_tabs">
-                <button class="aroma_button">Aroma</button>
-                <button class="appearence_button">Appearence</button>
-                <button class="flavor_button">Flavor</button>
-                <button class="mouthfeel_button">Mouthfeel</button>
+                <button class="flavor_button chosen_desc" data-field="flavor">Flavor</button>
+                <button class="aroma_button" data-field="aroma">Aroma</button>
+                <button class="appearence_button" data-field="appearence">Appearence</button>
+                <button class="mouthfeel_button" data-field="mouthfeel">Mouthfeel</button>
               </div>
 
-              <p class="aroma_desc"></p>
-              <p class="appearence_desc"></p>
-              <p class="flavor_desc"></p>
-              <p class="mouthfeel_desc"></p>
+              <p class="aroma_desc hidden" data-field="aroma"></p>
+              <p class="appearence_desc hidden" data-field="appearence"></p>
+              <p class="flavor_desc" data-field="flavor"></p>
+              <p class="mouthfeel_desc hidden" data-field="mouthfeel"></p>
             </div>
           </div>
         </article>
