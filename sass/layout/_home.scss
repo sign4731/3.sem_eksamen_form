@@ -1,0 +1,166 @@
+@use "../abstracts/vars";
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  //SKAL RYKKES TIL ANDEN FIL
+  background-color: vars.$bg_color;
+}
+
+#beerlist_container {
+  margin-top: 20vh;
+  padding: 0 30px;
+  width: 100vw;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  justify-items: center;
+  grid-gap: 20px;
+
+  .beer_image {
+    max-width: 100%;
+  }
+}
+
+.name_price {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media screen and (min-width: 600px) {
+  #beerlist_container {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    grid-gap: 50px;
+    padding: 0 70px;
+  }
+}
+
+#basket {
+  width: 100vw;
+  position: fixed;
+  overflow-y: scroll;
+  top: 0;
+  bottom: 0;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  display: none;
+
+  .added_beers {
+    height: 45vh;
+    overflow-y: scroll;
+  }
+
+  h3 {
+    padding-top: 20px;
+  }
+}
+
+.your_order {
+  padding: 35px 35px 0 35px;
+
+  p {
+    display: flex;
+    justify-content: space-between;
+    border-top: 3px dashed vars.$ui_color_light;
+    padding-top: 10px;
+  }
+}
+
+.payment {
+  padding: 0 35px 35px 35px;
+  .payment_options {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 0;
+  }
+
+  .payment_icon {
+    height: 50px;
+    width: 50px;
+    border-radius: 20cm;
+    border: none;
+    background-color: vars.$ui_color_light;
+    box-shadow: 1px 2px 8px #86868659;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  #basket {
+    width: 300px;
+    position: fixed;
+    overflow-y: scroll;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  #beerlist_container {
+    width: calc(100% - 300px);
+  }
+}
+
+/// singleview
+
+#singleview {
+  display: none;
+  position: fixed;
+  width: 100vw;
+  top: 0;
+  bottom: 0;
+  background-color: vars.$bg_color;
+
+  overflow-y: scroll;
+
+  .colored_bg {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    background-image: linear-gradient(vars.$yellow 52%, vars.$bg_color 48%);
+  }
+}
+
+.sv_beer_image {
+  width: 100%;
+  height: auto;
+}
+
+.beer_information {
+  margin: 0 40px;
+}
+
+@media screen and (min-width: 600px) {
+  #singleview {
+    width: calc(100% - 300px);
+    article {
+      display: flex;
+      flex-direction: row;
+      height: 100vh;
+      overflow-y: scroll;
+    }
+
+    .colored_bg {
+      height: 100vh;
+      width: 45%;
+      justify-content: center;
+      background-image: linear-gradient(to right, vars.$yellow 70%, vars.$bg_color 30%);
+    }
+    .beer_information {
+      width: 55%;
+      margin: 0 40px;
+    }
+    .sv_beer_image {⁄
+      width: auto;
+      height: auto;
+      margin-left: 39%;
+    }
+  }
+}

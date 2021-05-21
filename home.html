@@ -6,76 +6,84 @@
     <title>Home</title>
   </head>
   <header>
-    <div class="logo">
-      <img src="" alt="foobar logo" />
-    </div>
-
+    <div class="home_logo"></div>
     <nav>
-      <div id="menubar">
+      <!-- <div id="menubar">
         <img class="info_icon" src="" alt="info icon" />
         <img class="home_icon" src="" alt="home icon" />
         <img class="basket_icon" src="" alt="basket icon" />
-      </div>
+      </div> -->
     </nav>
   </header>
   <body>
     <main>
-      <section id="beerlist_container"></section>
+      <div class="beer_wrapper">
+        <section id="beerlist_container"></section>
 
-      <template>
-        <article id="template-article">
-          <img class="beer_image" src="" alt="beer image" />
-          <h4 class="beer_name"></h4>
-          <p class="price"></p>
-          <p class="alc"></p>
-        </article>
-      </template>
+        <template>
+          <article class="template-article">
+            <img class="beer_image" src="" alt="beer image" />
+            <h4 class="beer_name"></h4>
+            <div class="name_price">
+              <p class="alc"></p>
+              <p class="price"></p>
+            </div>
+          </article>
+        </template>
 
-      <section id="basket">
-        <div class="your_order">
-          <h3>Your order</h3>
-          <div class="added_beers">
-            <ul></ul>
+        <section id="basket">
+          <div class="your_order">
+            <h3>Your order</h3>
+            <div class="added_beers">
+              <ul></ul>
+            </div>
+            <p>Total: <span class="total_price">120,-</span></p>
           </div>
-          <p>Total: <span class="total_price"></span></p>
-        </div>
 
-        <div class="payment">
-          <h3>Payment method</h3>
-          <img class="mobilepay_icon" src="" alt="mobilepay icon" />
-          <img class="credit_icon" src="" alt="credit icon" />
-          <img class="contactless_icon" src="" alt="contactless icon" />
-          <button class="basket_pay">Pay</button>
-        </div>
-      </section>
+          <div class="payment">
+            <h3>Payment method</h3>
+            <div class="payment_options">
+              <button class="payment_icon"></button>
+              <button class="payment_icon"></button>
+              <button class="payment_icon"></button>
+            </div>
+            <button class="basket_pay">Pay</button>
+          </div>
+        </section>
+      </div>
 
       <section id="singleview">
-        <button class="close"></button>
+        <button class="close_singleview"></button>
         <article>
-          <div class="beer_intro">
-            <h1 class="sv_beer_name"></h1>
-            <p class="description"></p>
-            <p class="sv_price"></p>
-            <div>
-              <button>-</button>
-              <span class="amount"></span>
-              <button>+</button>
-              <button class="add_beer">Add</button>
-            </div>
+          <div class="colored_bg">
+            <img class="sv_beer_image" src="" alt="beer image" />
           </div>
-
-          <div class="desc_wrapper">
-            <div class="description_tabs">
-              <button class="aroma_button"></button>
-              <button class="appearence_button"></button>
-              <button class="flavor_button"></button>
-              <button class="mouthfeel_button"></button>
+          <div class="beer_information">
+            <div class="beer_intro">
+              <h1 class="sv_beer_name"></h1>
+              <p class="description"></p>
+              <p class="sv_price"></p>
+              <div>
+                <button>-</button>
+                <span class="amount"></span>
+                <button>+</button>
+                <button class="add_beer">Add</button>
+              </div>
             </div>
 
-            <p class="aroma_desc"></p>
-            <p class="appearence_desc"></p>
-            <p class="flavor_desc"></p>
-            <p class="mouthfeel_desc"></p>
+            <div class="desc_wrapper">
+              <div class="description_tabs">
+                <button class="aroma_button">Aroma</button>
+                <button class="appearence_button">Appearence</button>
+                <button class="flavor_button">Flavor</button>
+                <button class="mouthfeel_button">Mouthfeel</button>
+              </div>
+
+              <p class="aroma_desc"></p>
+              <p class="appearence_desc"></p>
+              <p class="flavor_desc"></p>
+              <p class="mouthfeel_desc"></p>
+            </div>
           </div>
         </article>
       </section>

@@ -7,5 +7,22 @@
   left: 29px;
   top: 31px;
   background-repeat: no-repeat;
-  background-image: url(/public/back.svg);
+  background-image: url(/back.svg);
+  display: none;
+
+  @media (min-width: 768px) {
+    display: block;
+  }
+}
+
+.close_singleview {
+  position: absolute;
+  width: 32px;
+  height: 23px;
+  left: 29px;
+  top: 31px;
+  background-repeat: no-repeat;
+  background-image: url(/back.svg);
+  background-color: transparent;
+  border: none;
 }
