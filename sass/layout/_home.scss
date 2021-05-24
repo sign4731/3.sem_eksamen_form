@@ -1,15 +1,5 @@
 @use "../abstracts/vars";
 
-* {
-  margin: 0;
-  box-sizing: border-box;
-}
-
-body {
-  //SKAL RYKKES TIL ANDEN FIL
-  background-color: vars.$bg_color;
-}
-
 #beerlist_container {
   margin-top: 20vh;
   padding: 0 30px;
@@ -20,7 +10,7 @@ body {
   grid-gap: 20px;
 
   .beer_image {
-    max-width: 100%;
+    max-width: 90%;
   }
 }
 
@@ -48,6 +38,8 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  box-shadow: -4px 0px 12px 4px #8686860d;
+  z-index: 1;
 
   display: none;
 
@@ -90,7 +82,7 @@ body {
   }
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 1000px) {
   #basket {
     width: 300px;
     position: fixed;
@@ -129,15 +121,91 @@ body {
 }
 
 .sv_beer_image {
-  width: 100%;
+  width: 35%;
   height: auto;
+  @media screen and (min-width: 500px) {
+    width: 17%;
+  }
 }
 
 .beer_information {
-  margin: 0 40px;
+  padding: 0 30px 40px 30px;
+  max-width: 550px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+
+  @media screen and (min-width: 1000px) {
+    max-width: 400px;
+    margin: 0 40px;
+    padding: 0;
+    padding-top: 12.5vh;
+  }
+
+  h1 {
+    padding-bottom: 15px;
+  }
 }
 
-@media screen and (min-width: 600px) {
+.beer_amount {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.amount {
+  padding: 0 5px;
+}
+
+.plus_minus {
+  background-color: white;
+  width: 27px;
+  height: 27px;
+  border: none;
+  border-radius: 50%;
+  color: vars.$ui_color_dark;
+  box-shadow: 0.5px 0.5px 2px #86868644;
+}
+
+.description {
+  padding-bottom: 10px;
+}
+
+.sv_alc {
+  padding: 5px 0;
+}
+.sv_price {
+  padding-bottom: 25px;
+}
+
+.description_tabs {
+  background-color: white;
+  box-shadow: 0.5px 0.5px 2px #86868644;
+  border-radius: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 3px 3px;
+  margin-top: 35px;
+  margin-bottom: 15px;
+
+  button {
+    color: grey;
+    text-transform: none;
+    font-weight: 100;
+    background-color: transparent;
+    border: none;
+    height: 25px;
+    font-size: 12px;
+
+    @media screen and (min-width: 600px) {
+      width: 25%;
+    }
+  }
+}
+
+@media screen and (min-width: 1000px) {
   #singleview {
     width: calc(100% - 300px);
     article {
@@ -155,7 +223,7 @@ body {
     }
     .beer_information {
       width: 55%;
-      margin: 0 40px;
+      margin: 0 40px 0 20px;
     }
     .sv_beer_image {
       width: auto;
