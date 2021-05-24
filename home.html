@@ -31,12 +31,27 @@
           </article>
         </template>
 
+        <template id="basket_template">
+          <article class="basket_article" data-field="">
+            <div>
+              <button class="close_added_beer">x</button>
+              <img class="basket_beer_image" src="" alt="beer image" />
+              <p class="basket_beer_name"></p>
+              <p class="basket_beer_price"></p>
+              <p class="basket_beer_subtotal"></p>
+              <div>
+                <button class="plus_minus">-</button>
+                <input type="text" value="0" disabled class="amount" />
+                <button class="plus_minus">+</button>
+              </div>
+            </div>
+          </article>
+        </template>
+
         <section id="basket">
           <div class="your_order">
             <h3>Your order</h3>
-            <div class="added_beers">
-              <ul></ul>
-            </div>
+            <div class="added_beers"></div>
             <p>Total: <span class="total_price">120,-</span></p>
           </div>
 
@@ -61,14 +76,14 @@
           <div class="beer_information">
             <div class="beer_intro">
               <h1 class="sv_beer_name"></h1>
-              <p class="description"></p>
               <p class="sv_alc"></p>
+              <p class="description"></p>
               <p class="sv_price"></p>
               <div class="beer_amount">
                 <div>
-                  <button class="plus_minus">-</button>
-                  <span class="amount">0</span>
-                  <button class="plus_minus">+</button>
+                  <button class="plus_minus minus">-</button>
+                  <input type="text" value="0" disabled class="amount" />
+                  <button class="plus_minus plus">+</button>
                 </div>
                 <button class="add_beer">Add</button>
               </div>
