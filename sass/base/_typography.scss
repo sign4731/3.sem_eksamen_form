@@ -12,6 +12,19 @@ h1 {
   }
 }
 
+//kan størrelsen på h1 også ændres på help?
+#singleview h1 {
+  font-family: "Train One", cursive;
+  font-size: 35px;
+  line-height: 50px;
+  color: vars.$ui_color_dark;
+  text-transform: uppercase;
+  @media (min-width: 768px) {
+    font-size: 50px;
+    line-height: 72px;
+  }
+}
+
 h2 {
   font-family: "Poppins", sans-serif;
   font-weight: 600;

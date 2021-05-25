@@ -1,4 +1,7 @@
 @use "../abstracts/vars";
+:root {
+  --colored_bg: vars.$ui_color_light;
+}
 
 #beerlist_container {
   margin-top: 20vh;
@@ -46,6 +49,15 @@
   .added_beers {
     height: 45vh;
     overflow-y: scroll;
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    img {
+      width: 80px;
+    }
   }
 
   h3 {
@@ -54,9 +66,9 @@
 }
 
 .your_order {
-  padding: 35px 35px 0 35px;
+  padding: 30px 30px 0 30px;
 
-  p {
+  p:last-child {
     display: flex;
     justify-content: space-between;
     border-top: 3px dashed vars.$ui_color_light;
@@ -65,7 +77,7 @@
 }
 
 .payment {
-  padding: 0 35px 35px 35px;
+  padding: 0 30px 30px 30px;
   .payment_options {
     display: flex;
     justify-content: space-between;
@@ -84,7 +96,7 @@
 
 @media screen and (min-width: 1000px) {
   #basket {
-    width: 300px;
+    width: 250px;
     position: fixed;
     overflow-y: scroll;
     top: 0;
@@ -96,7 +108,7 @@
     justify-content: space-between;
   }
   #beerlist_container {
-    width: calc(100% - 300px);
+    width: calc(100% - 250px);
   }
 }
 
@@ -116,8 +128,12 @@
     width: 100vw;
     display: flex;
     justify-content: center;
-    background-image: linear-gradient(vars.$yellow 52%, vars.$bg_color 48%);
+    background-image: linear-gradient(var(--colored_bg) 52%, vars.$bg_color 48%);
   }
+}
+
+.desc_wrapper {
+  padding-bottom: 30px;
 }
 
 .sv_beer_image {
@@ -155,6 +171,10 @@
 
 .amount {
   padding: 0 5px;
+  width: 30px;
+  background-color: transparent;
+  border: none;
+  text-align: center;
 }
 
 .plus_minus {
@@ -207,7 +227,7 @@
 
 @media screen and (min-width: 1000px) {
   #singleview {
-    width: calc(100% - 300px);
+    width: calc(100% - 250px);
     article {
       display: flex;
       flex-direction: row;
@@ -219,11 +239,13 @@
       height: 100vh;
       width: 45%;
       justify-content: center;
-      background-image: linear-gradient(to right, vars.$yellow 70%, vars.$bg_color 30%);
+      background-image: linear-gradient(to right, var(--colored_bg) 70%, vars.$bg_color 30%);
     }
     .beer_information {
       width: 55%;
       margin: 0 40px 0 20px;
+      height: 100vh;
+      overflow-y: scroll;
     }
     .sv_beer_image {
       width: auto;
