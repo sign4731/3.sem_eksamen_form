@@ -3,6 +3,9 @@ import "./sass/style.scss";
 window.addEventListener("DOMContentLoaded", init);
 let filter = "flavor";
 
+const countEl = document.querySelector(".amount");
+let count = countEl.value;
+
 const beerColors = {
   "Ruined Childhood": "#75b2ff",
   "El Hefe": "#ffda58",
@@ -28,6 +31,8 @@ const basket = {
   Steampunk: false,
   "Fairy Tale Ale": false,
 };
+
+const Order = {};
 
 function init() {
   getData();
@@ -75,10 +80,9 @@ function showDetails(beer, beerName) {
 
   document.querySelector(".close_singleview").addEventListener("click", function () {
     details.style.display = "none";
-    document.querySelector(".amount").value = 0;
+    restatCounter();
   });
 
-  // document.querySelector(".add_beer").addEventListener("click", () => createAddedElement(beer));
   document.querySelector(".add_beer").addEventListener("click", () => {
     const basketItem = createAddedElement(beer);
     console.log(basketItem.dataset.field);
@@ -86,19 +90,20 @@ function showDetails(beer, beerName) {
       basket[basketItem.dataset.field] = true;
       document.querySelector(".added_beers").append(basketItem);
       restatCounter();
-      console.log(basket);
     } else if (basket[basketItem.dataset.field]) {
-      console.log(basketItem);
-      let new_amount = document.querySelector(".amount").value;
-      let old_amount = document.querySelector(".basket_amount").value;
-      console.log(new_amount);
-      console.log(document.querySelector(".basket_amount").value);
-      let newnewAmount = old_amount.parseInt + new_amount.parseInt;
-      console.log(typeOf(newnewAmount));
+      let new_amount = parseFloat(document.querySelector(".amount").value);
+      let old_amount = parseFloat(document.querySelector(".basket_amount").value);
+      // const test = beer.name.split(" ").join("-").toLowerCase() + "-amount";
+      // let old_amount = parseFloat(document.querySelector(`.${test}`).value);
+      let newnewAmount = old_amount + new_amount;
       document.querySelector(".basket_amount").value = newnewAmount;
+      // document.querySelector(`.${test}`).value = newnewAmount;
+      const price = 40 * newnewAmount;
+      document.querySelector("#basket p:nth-child(5)").textContent = price + ",-";
+
+      restatCounter();
     }
   });
-
   setColorsOfBeer(beer);
   calculateAmount(beer);
   addEventListenerToButtons();
@@ -139,8 +144,6 @@ function filterDesc() {
 function calculateAmount() {
   document.querySelector(".plus").addEventListener("click", () => plus());
   document.querySelector(".minus").addEventListener("click", () => minus());
-  const countEl = document.querySelector(".amount");
-  let count = countEl.value;
 
   function plus() {
     count++;
@@ -159,9 +162,8 @@ function calculateAmount() {
 }
 
 function createAddedElement(beer) {
-
   console.log(beer);
-  const price = 40 * document.querySelector(".amount").value;
+  const price = 40 * document.querySelector(".amount").value + ",-";
   const li = document.createElement("li");
   li.dataset.field = beer.name;
   const button = document.createElement("button");
@@ -189,25 +191,17 @@ function createAddedElement(beer) {
   const input = document.createElement("input");
   const amount = document.querySelector(".amount").value;
   input.classList.add("basket_amount");
+  // input.classList.add(`${beer.name}_basket`);
+  // const test = beer.name.split(" ").join("-").toLowerCase() + "-amount";
   input.value = amount;
   input.disabled = true;
+
   li.append(input);
-  let container = document.querySelector(".added_beers");
-  let temp = document.querySelector("#basket_template");
-
-  // const clone = temp.cloneNode(true).content;
-  let clone = temp.content.cloneNode(true).firstElementChild;
-  clone.querySelector(".basket_article").dataset.field = beer.name;
-  clone.querySelector(".basket_beer_image").src = `beer_images_with_circle/${beer.name}.png`;
-  clone.querySelector(".basket_beer_name").textContent = beer.name;
-  clone.querySelector(".basket_beer_price").textContent = "40,-";
-  clone.querySelector(".basket_beer_subtotal").textContent = "40" * document.querySelector(".amount").value;
-
-  console.log(li);
 
   return li;
 }
 
 function restatCounter() {
   document.querySelector(".amount").value = 0;
+  count = 0;
 }
