@@ -129,7 +129,8 @@ function createAddedElement(beer) {
   let container = document.querySelector(".added_beers");
   let temp = document.querySelector("#basket_template");
 
-  const clone = temp.cloneNode(true).content;
+  // const clone = temp.cloneNode(true).content;
+  let clone = temp.content.cloneNode(true).firstElementChild;
   clone.querySelector(".basket_article").dataset.field = beer.name;
   clone.querySelector(".basket_beer_image").src = `beer_images_with_circle/${beer.name}.png`;
   clone.querySelector(".basket_beer_name").textContent = beer.name;
