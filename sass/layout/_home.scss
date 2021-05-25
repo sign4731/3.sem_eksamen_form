@@ -82,16 +82,24 @@
     display: flex;
     justify-content: space-between;
     padding: 30px 0;
-  }
 
-  .payment_icon {
-    height: 50px;
-    width: 50px;
-    border-radius: 20cm;
-    border: none;
-    background-color: vars.$ui_color_light;
-    box-shadow: 1px 2px 8px #86868659;
+    button {
+      height: 45px;
+      width: 45px;
+      border-radius: 20cm;
+      border: none;
+      background-color: vars.$ui_color_light;
+      box-shadow: 1px 2px 8px #86868659;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   }
+}
+
+.payment button:nth-child(3) > img {
+  width: 60%;
 }
 
 @media screen and (min-width: 1000px) {
