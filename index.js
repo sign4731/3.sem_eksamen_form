@@ -159,6 +159,7 @@ function calculateAmount() {
 }
 
 function createAddedElement(beer) {
+
   console.log(beer);
   const price = 40 * document.querySelector(".amount").value;
   const li = document.createElement("li");
@@ -191,6 +192,16 @@ function createAddedElement(beer) {
   input.value = amount;
   input.disabled = true;
   li.append(input);
+  let container = document.querySelector(".added_beers");
+  let temp = document.querySelector("#basket_template");
+
+  // const clone = temp.cloneNode(true).content;
+  let clone = temp.content.cloneNode(true).firstElementChild;
+  clone.querySelector(".basket_article").dataset.field = beer.name;
+  clone.querySelector(".basket_beer_image").src = `beer_images_with_circle/${beer.name}.png`;
+  clone.querySelector(".basket_beer_name").textContent = beer.name;
+  clone.querySelector(".basket_beer_price").textContent = "40,-";
+  clone.querySelector(".basket_beer_subtotal").textContent = "40" * document.querySelector(".amount").value;
 
   console.log(li);
 
