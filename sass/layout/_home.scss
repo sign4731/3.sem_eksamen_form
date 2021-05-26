@@ -23,9 +23,17 @@
   align-items: center;
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 500px) {
   #beerlist_container {
     grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    grid-gap: 50px;
+    padding: 0 70px;
+  }
+}
+
+@media screen and (min-width: 930px) {
+  #beerlist_container {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
     grid-gap: 50px;
     padding: 0 70px;
   }
