@@ -63,10 +63,11 @@ async function getData() {
 }
 
 function showDetails(beer, beerName) {
-  console.log(beer, beerName);
+  console.log(beer);
   const details = document.querySelector("#singleview");
   details.style.display = "block";
 
+  console.log(count);
   details.querySelector(".sv_beer_image").src = `beer_images_shadow/${beerName}.png`;
   details.querySelector(".sv_beer_name").textContent = beer.name;
   details.querySelector(".sv_alc").textContent = beer.alc + "% alc.";
@@ -80,32 +81,50 @@ function showDetails(beer, beerName) {
 
   document.querySelector(".close_singleview").addEventListener("click", function () {
     details.style.display = "none";
+
+    document.querySelector(".plus").removeEventListener("click", plus);
+    document.querySelector(".minus").removeEventListener("click", minus);
+    document.querySelector(".add_beer").removeEventListener("click", addToBasket);
     restatCounter();
   });
 
-  document.querySelector(".add_beer").addEventListener("click", () => {
-    const basketItem = createAddedElement(beer);
-    console.log(basketItem.dataset.field);
+  let basket_item_name = beer.name.split(" ").join("_").toLowerCase() + "_basket";
+
+  document.querySelector(".add_beer").addEventListener("click", addToBasket);
+
+  function addToBasket() {
+    console.log(basket_item_name, "is added to basket");
+    const basketItem = createAddedElement(beer, basket_item_name);
+    console.log(basketItem);
+
     if (!basket[basketItem.dataset.field]) {
+      console.log(basket_item_name);
       basket[basketItem.dataset.field] = true;
       document.querySelector(".added_beers").append(basketItem);
+
+      calculateBasketAmount(basket_item_name);
       restatCounter();
     } else if (basket[basketItem.dataset.field]) {
+      console.log(basket_item_name);
       let new_amount = parseFloat(document.querySelector(".amount").value);
-      let old_amount = parseFloat(document.querySelector(".basket_amount").value);
-      // const test = beer.name.split(" ").join("-").toLowerCase() + "-amount";
-      // let old_amount = parseFloat(document.querySelector(`.${test}`).value);
+      let old_amount = parseFloat(document.querySelector(`.${basket_item_name} .basket_amount`).value);
       let newnewAmount = old_amount + new_amount;
-      document.querySelector(".basket_amount").value = newnewAmount;
-      // document.querySelector(`.${test}`).value = newnewAmount;
+
+      document.querySelector(`.${basket_item_name} .basket_amount`).value = newnewAmount;
+
       const price = 40 * newnewAmount;
+
       document.querySelector("#basket p:nth-child(5)").textContent = price + ",-";
 
+      calculateBasketAmount(basket_item_name);
       restatCounter();
     }
-  });
+  }
+
+  document.querySelector(".plus").addEventListener("click", plus);
+  document.querySelector(".minus").addEventListener("click", minus);
+
   setColorsOfBeer(beer);
-  calculateAmount(beer);
   addEventListenerToButtons();
 }
 
@@ -141,58 +160,99 @@ function filterDesc() {
   document.querySelector(`.${filter}_desc`).classList.remove("hidden");
 }
 
-function calculateAmount() {
-  document.querySelector(".plus").addEventListener("click", () => plus());
-  document.querySelector(".minus").addEventListener("click", () => minus());
+function plus() {
+  console.log(count);
+  count++;
+  countEl.value = count;
+  document.querySelector(".minus").style.backgroundColor = "white";
+}
 
-  function plus() {
-    count++;
+function minus() {
+  console.log(count);
+  if (count > 1) {
+    count--;
     countEl.value = count;
+    if (count < 2) {
+      document.querySelector(".minus").style.backgroundColor = "#f4f4f4";
+    }
+  }
+}
+
+function calculateBasketAmount(basket_item_name) {
+  document.querySelector(`.${basket_item_name} .plus_basket`).addEventListener("click", () => plusBasket());
+  document.querySelector(`.${basket_item_name} .minus_basket`).addEventListener("click", () => minusBasket());
+  console.log(document.querySelector(`.${basket_item_name} .minus_basket`));
+
+  let basketCounter = document.querySelector(`.${basket_item_name} .basket_amount`);
+  let basketCount = basketCounter.value;
+  console.log(basketCounter);
+  function plusBasket() {
+    console.log("hej plus");
+    basketCount++;
+    console.log(basketCount);
+    basketCounter.value = basketCount;
     document.querySelector(".minus").style.backgroundColor = "white";
   }
-  function minus() {
-    if (count > 0) {
-      count--;
-      countEl.value = count;
-      if (count < 1) {
+  function minusBasket() {
+    console.log("hej minus");
+    if (basketCount > 0) {
+      basketCount--;
+      basketCounter.value = basketCount;
+      if (basketCount < 1) {
         document.querySelector(".minus").style.backgroundColor = "#f4f4f4";
       }
     }
   }
 }
 
-function createAddedElement(beer) {
+function createAddedElement(beer, basket_item_name) {
   console.log(beer);
+
   const price = 40 * document.querySelector(".amount").value + ",-";
+  console.log(price);
+
   const li = document.createElement("li");
+  li.classList.add(basket_item_name);
   li.dataset.field = beer.name;
+
   const button = document.createElement("button");
   button.classList.add("close_added_beer");
   button.value = "x";
+
   li.append(button);
   const img = document.createElement("img");
   img.src = `beer_images_with_circle/${beer.name}.png`;
   li.append(img);
+
   let text = [beer.name, "40,-", price];
   text.forEach(function (el) {
     const p = document.createElement("p");
     p.textContent = el;
     li.append(p);
   });
+
   const div = document.createElement("div");
   li.append(div);
+
   const plus_minus_button_value = ["+", "-"];
+
   plus_minus_button_value.forEach(function (el) {
     const button = document.createElement("button");
     button.textContent = el;
-    button.classList.add("plus_minus");
+
+    if (el === "+") {
+      button.classList.add("plus_minus", "plus_basket");
+    } else {
+      button.classList.add("plus_minus", "minus_basket");
+    }
+
     div.append(button);
   });
+
   const input = document.createElement("input");
   const amount = document.querySelector(".amount").value;
   input.classList.add("basket_amount");
-  // input.classList.add(`${beer.name}_basket`);
-  // const test = beer.name.split(" ").join("-").toLowerCase() + "-amount";
+
   input.value = amount;
   input.disabled = true;
 
@@ -202,6 +262,6 @@ function createAddedElement(beer) {
 }
 
 function restatCounter() {
-  document.querySelector(".amount").value = 0;
-  count = 0;
+  document.querySelector(".amount").value = 1;
+  count = 1;
 }
