@@ -3,6 +3,12 @@ import "./sass/style.scss";
 window.addEventListener("DOMContentLoaded", init);
 let filter = "flavor";
 
+const paymentMethod = {
+  mobilepay: false,
+  card: false,
+  contactless: false,
+};
+
 const countEl = document.querySelector(".amount");
 let count = countEl.value;
 
@@ -60,6 +66,41 @@ async function getData() {
 
     container.appendChild(clone);
   });
+
+  getPaymentMethod();
+  document.querySelector(".basket_pay").addEventListener("click", pressingPay);
+}
+
+function getPaymentMethod() {
+  document.querySelectorAll(".payment_icon").forEach((button) => {
+    button.addEventListener("click", () => {
+      console.log(button);
+      paymentMethod[button.dataset.payment] = true;
+      document.querySelector(`[data-payment=${button.dataset.payment}]`).classList.add("chosen");
+      console.log(button.dataset.payment);
+      console.log(paymentMethod);
+      document.querySelectorAll(".payment_icon").forEach((method) => {
+        if (button.dataset.payment !== method.dataset.payment) {
+          method.classList.remove("chosen");
+          paymentMethod[method.dataset.payment] = false;
+          console.log(paymentMethod);
+        }
+      });
+    });
+  });
+}
+
+function pressingPay() {
+  console.log("pay is pressed!");
+  if (Object.keys(paymentMethod).every((k) => !paymentMethod[k])) {
+    console.log("no payment chosen!");
+  } else if (paymentMethod.mobilepay) {
+    console.log("mobilepay is chosen");
+  } else if (paymentMethod.card) {
+    console.log("card is chosen");
+  } else if (paymentMethod.contactless) {
+    console.log("contactless is chosen");
+  }
 }
 
 function showDetails(beer, beerName) {
@@ -85,6 +126,7 @@ function showDetails(beer, beerName) {
     document.querySelector(".plus").removeEventListener("click", plus);
     document.querySelector(".minus").removeEventListener("click", minus);
     document.querySelector(".add_beer").removeEventListener("click", addToBasket);
+    // document.querySelector(".remove_added_beer").removeEventListener("click", removeBasketItem);
     restatCounter();
   });
 
@@ -95,12 +137,11 @@ function showDetails(beer, beerName) {
   function addToBasket() {
     console.log(basket_item_name, "is added to basket");
     const basketItem = createAddedElement(beer, basket_item_name);
-    console.log(basketItem);
 
     if (!basket[basketItem.dataset.field]) {
       console.log(basket_item_name);
       basket[basketItem.dataset.field] = true;
-      document.querySelector(".added_beers").append(basketItem);
+      document.querySelector(".added_beers ul").append(basketItem);
 
       calculateBasketAmount(basket_item_name);
       restatCounter();
@@ -113,12 +154,18 @@ function showDetails(beer, beerName) {
       document.querySelector(`.${basket_item_name} .basket_amount`).value = newnewAmount;
 
       const price = 40 * newnewAmount;
-
-      document.querySelector("#basket p:nth-child(5)").textContent = price + ",-";
+      console.log(basketItem);
+      document.querySelector(`.${basket_item_name} p:nth-child(4)`).textContent = price + ",-";
 
       calculateBasketAmount(basket_item_name);
       restatCounter();
     }
+
+    displayTotal();
+
+    document.querySelector(`.remove_${basket_item_name}`).addEventListener("click", () => {
+      removeBasketItem(basketItem, basket_item_name);
+    });
   }
 
   document.querySelector(".plus").addEventListener("click", plus);
@@ -126,6 +173,14 @@ function showDetails(beer, beerName) {
 
   setColorsOfBeer(beer);
   addEventListenerToButtons();
+}
+
+function removeBasketItem(basketItem, basket_item_name) {
+  console.log("you want to remove", basketItem);
+  document.querySelector(`.remove_${basket_item_name}`).removeEventListener("click", removeBasketItem);
+  basketItem.remove();
+  basket[basketItem.dataset.field] = false;
+  displayTotal();
 }
 
 function setColorsOfBeer(beer) {
@@ -185,21 +240,31 @@ function calculateBasketAmount(basket_item_name) {
 
   let basketCounter = document.querySelector(`.${basket_item_name} .basket_amount`);
   let basketCount = basketCounter.value;
-  console.log(basketCounter);
+  // let basketPrice = parseInt(document.querySelector(`.${basket_item_name} .basket_text:nth-child(4)`).textContent);
+
   function plusBasket() {
     console.log("hej plus");
     basketCount++;
-    console.log(basketCount);
     basketCounter.value = basketCount;
-    document.querySelector(".minus").style.backgroundColor = "white";
+    let newBasketPrice = 40 * basketCount;
+    let newnewPrice = newBasketPrice.toString();
+    document.querySelector(`.${basket_item_name} .basket_text:nth-child(4)`).textContent = `${newnewPrice},-`;
+    document.querySelector(`.${basket_item_name} .minus_basket`).style.backgroundColor = "white";
+    displayTotal();
   }
   function minusBasket() {
     console.log("hej minus");
-    if (basketCount > 0) {
+    if (basketCount > 1) {
       basketCount--;
       basketCounter.value = basketCount;
-      if (basketCount < 1) {
-        document.querySelector(".minus").style.backgroundColor = "#f4f4f4";
+      let newBasketPrice = 40 * basketCount;
+      let newnewPrice = newBasketPrice.toString();
+      document.querySelector(`.${basket_item_name} .basket_text:nth-child(4)`).textContent = `${newnewPrice},-`;
+      displayTotal();
+
+      if (basketCount < 2) {
+        document.querySelector(`.${basket_item_name} .minus_basket`).style.backgroundColor = "#f4f4f4";
+        displayTotal();
       }
     }
   }
@@ -215,24 +280,22 @@ function createAddedElement(beer, basket_item_name) {
   li.classList.add(basket_item_name);
   li.dataset.field = beer.name;
 
-  const button = document.createElement("button");
-  button.classList.add("close_added_beer");
-  button.value = "x";
-
-  li.append(button);
   const img = document.createElement("img");
   img.src = `beer_images_with_circle/${beer.name}.png`;
   li.append(img);
+
+  const div_text = document.createElement("div");
+  const div_amount = document.createElement("div");
+  li.append(div_text);
+  div_text.append(div_amount);
 
   let text = [beer.name, "40,-", price];
   text.forEach(function (el) {
     const p = document.createElement("p");
     p.textContent = el;
-    li.append(p);
+    p.classList.add("basket_text");
+    div_text.append(p);
   });
-
-  const div = document.createElement("div");
-  li.append(div);
 
   const plus_minus_button_value = ["+", "-"];
 
@@ -246,7 +309,7 @@ function createAddedElement(beer, basket_item_name) {
       button.classList.add("plus_minus", "minus_basket");
     }
 
-    div.append(button);
+    div_amount.append(button);
   });
 
   const input = document.createElement("input");
@@ -256,7 +319,11 @@ function createAddedElement(beer, basket_item_name) {
   input.value = amount;
   input.disabled = true;
 
-  li.append(input);
+  div_amount.append(input);
+
+  const button = document.createElement("button");
+  button.classList.add("remove_added_beer", `remove_${basket_item_name}`);
+  li.append(button);
 
   return li;
 }
@@ -264,4 +331,17 @@ function createAddedElement(beer, basket_item_name) {
 function restatCounter() {
   document.querySelector(".amount").value = 1;
   count = 1;
+}
+
+function displayTotal() {
+  let priceCount = 0;
+  document.querySelectorAll(".basket_text:nth-child(4)").forEach((element) => {
+    let itemTotal = parseInt(element.textContent);
+    console.log(itemTotal);
+    priceCount += itemTotal;
+  });
+  console.log("this is price count", priceCount);
+  let stringifiedPrice = priceCount.toString();
+  console.log("price as string", stringifiedPrice);
+  document.querySelector(".total_price").textContent = `${priceCount},-`;
 }
