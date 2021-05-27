@@ -168,7 +168,7 @@ function createAddedElement(beer) {
   li.dataset.field = beer.name;
   const button = document.createElement("button");
   button.classList.add("close_added_beer");
-  button.value = "x";
+  button.textContent = "x";
   li.append(button);
   const img = document.createElement("img");
   img.src = `beer_images_with_circle/${beer.name}.png`;
