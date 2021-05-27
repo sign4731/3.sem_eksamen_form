@@ -279,7 +279,10 @@ function createAddedElement(beer, basket_item_name) {
   const li = document.createElement("li");
   li.classList.add(basket_item_name);
   li.dataset.field = beer.name;
-
+  const button = document.createElement("button");
+  button.classList.add("close_added_beer");
+  button.textContent = "x";
+  li.append(button);
   const img = document.createElement("img");
   img.src = `beer_images_with_circle/${beer.name}.png`;
   li.append(img);
