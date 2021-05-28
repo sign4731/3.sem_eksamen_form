@@ -73,6 +73,16 @@ h4 {
   }
 }
 
+.basket_amount {
+  font-family: "Poppins", sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: vars.$ui_color_dark;
+  @media (min-width: 768px) {
+    font-size: 13px;
+  }
+}
+
 .sv_price {
   font-size: 40px;
   font-weight: 600;
