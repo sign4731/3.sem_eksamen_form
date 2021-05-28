@@ -38,8 +38,6 @@ const basket = {
   "Fairy Tale Ale": false,
 };
 
-const Order = {};
-
 function init() {
   getData();
 }
@@ -68,7 +66,7 @@ async function getData() {
   });
 
   getPaymentMethod();
-  document.querySelector(".basket_pay").addEventListener("click", pressingPay);
+  document.querySelector(".basket_pay").addEventListener("click", pressingOrder);
 }
 
 function getPaymentMethod() {
@@ -90,17 +88,50 @@ function getPaymentMethod() {
   });
 }
 
-function pressingPay() {
+function pressingOrder() {
   console.log("pay is pressed!");
-  if (Object.keys(paymentMethod).every((k) => !paymentMethod[k])) {
+  localStorage.clear();
+  console.log(localStorage);
+  document.querySelectorAll(".pay_alert_message").forEach((btn) => {
+    btn.classList.add("hidden");
+  });
+  if (Object.keys(basket).every((k) => !basket[k])) {
+    console.log("basket is empty!");
+    document.querySelector(".pay_alert_message:nth-child(4)").classList.remove("hidden");
+  } else if (Object.keys(paymentMethod).every((k) => !paymentMethod[k])) {
     console.log("no payment chosen!");
+    document.querySelector(".pay_alert_message").classList.remove("hidden");
   } else if (paymentMethod.mobilepay) {
     console.log("mobilepay is chosen");
-  } else if (paymentMethod.card) {
-    console.log("card is chosen");
+    document.querySelector(".pay_alert_message:nth-child(3)").classList.remove("hidden");
   } else if (paymentMethod.contactless) {
     console.log("contactless is chosen");
+    document.querySelector(".pay_alert_message:nth-child(3)").classList.remove("hidden");
+  } else if (paymentMethod.card) {
+    console.log("card is chosen");
+    findBasketItems();
+    window.location.href = "form.html";
   }
+}
+
+function findBasketItems() {
+  document.querySelectorAll(".added_beers li").forEach((element) => {
+    let elementName = element.dataset.field;
+    let elementAmount = document.querySelector(`.${element.className} .basket_amount`).value;
+    console.log(elementName);
+
+    let items = JSON.parse(localStorage.getItem("itemsArray")) || [];
+    let item = {
+      name: elementName,
+      amount: elementAmount,
+    };
+
+    items.push(item);
+
+    localStorage.setItem("itemsArray", JSON.stringify(items));
+
+    console.log(JSON.parse(localStorage.getItem("itemsArray")));
+  });
 }
 
 function showDetails(beer, beerName) {
@@ -344,4 +375,5 @@ function displayTotal() {
   let stringifiedPrice = priceCount.toString();
   console.log("price as string", stringifiedPrice);
   document.querySelector(".total_price").textContent = `${priceCount},-`;
+  // document.querySelector("#form_body p").textContent += `${priceCount},-`;
 }
