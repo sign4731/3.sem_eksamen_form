@@ -59,51 +59,62 @@
     height: 20px;
     background: url(/close-outline.svg) no-repeat;
     border: none;
+    position: absolute;
+    top: 0;
+    right: 0;
   }
 
   .added_beers {
-    height: 45vh;
+    height: 50vh;
     overflow-y: scroll;
 
     ul {
       list-style-type: none;
-      padding: 20px 0;
+      padding: 40px 0;
 
       li {
         display: flex;
         justify-content: space-between;
-        > div {
-          display: grid;
-          grid-template-areas: "name" "singleprice" "amount" "totalprice";
+        align-items: center;
 
-          p:nth-child(2) {
-            grid-area: name;
-          }
-          p:nth-child(3) {
-            grid-area: singleprice;
-          }
-          p:nth-child(4) {
-            grid-area: totalprice;
-          }
+        position: relative;
+
+        margin-bottom: 40px;
+
+        .subtotal {
+          color: grey;
+          font-size: 12px;
+          align-self: flex-end;
+          margin-bottom: 1%;
+          width: 40px;
+          text-align: end;
         }
-        div > div {
-          grid-area: amount;
-          display: grid;
-          grid-template-areas: "minus basket_amount plus";
-          .plus_basket {
-            grid-area: plus;
+        > div {
+          display: flex;
+          flex-direction: column-reverse;
+          justify-content: space-between;
+          margin-left: -30px;
+          min-height: 80px;
+
+          p:nth-child(3) {
+            width: 65px;
+            color: vars.$ui_color_dark;
+            align-self: flex-start;
           }
-          .basket_amount {
-            grid-area: basket_amount;
+          p:nth-child(2) {
+            padding: 3px 0;
+            font-weight: 600;
           }
-          .minus_basket {
-            grid-area: minus;
+
+          > div {
+            display: flex;
           }
         }
       }
 
       img {
-        width: 80px;
+        width: 60px;
+        margin-left: -5px;
       }
     }
 
@@ -113,9 +124,9 @@
   }
 
   .your_order {
-    padding: 30px 30px 0 30px;
+    padding: 25px 25px 0 25px;
 
-    p:last-child {
+    .total {
       display: flex;
       justify-content: space-between;
       border-top: 3px dashed vars.$ui_color_light;
@@ -124,13 +135,14 @@
   }
 
   .payment {
-    padding: 0 30px 30px 30px;
+    padding: 0 25px 25px 25px;
     .pay_alert_message {
       color: tomato;
       font-family: "Poppins", sans-serif;
       font-size: 0.7rem;
       position: absolute;
     }
+
     .payment_options {
       display: flex;
       justify-content: space-between;
@@ -161,7 +173,7 @@
 
 @media screen and (min-width: 1000px) {
   #basket {
-    width: 250px;
+    width: 270px;
     position: fixed;
     overflow-y: scroll;
     top: 0;
@@ -173,7 +185,7 @@
     justify-content: space-between;
   }
   #beerlist_container {
-    width: calc(100% - 250px);
+    width: calc(100% - 270px);
   }
 }
 
@@ -234,10 +246,17 @@
   justify-content: space-between;
 }
 
-.amount,
-.basket_amount {
+.amount {
   padding: 0 5px;
   width: 30px;
+  background-color: transparent;
+  border: none;
+  text-align: center;
+}
+
+.basket_amount {
+  padding: 0 5px;
+  width: 28px;
   background-color: transparent;
   border: none;
   text-align: center;
@@ -251,6 +270,13 @@
   border-radius: 50%;
   color: vars.$ui_color_dark;
   box-shadow: 0.5px 0.5px 2px #86868644;
+  padding-top: 1.7px;
+}
+
+.added_beers .plus_minus {
+  width: 23px;
+  height: 23px;
+  font-size: 14px;
 }
 
 .description {
@@ -293,7 +319,7 @@
 
 @media screen and (min-width: 1000px) {
   #singleview {
-    width: calc(100% - 250px);
+    width: calc(100% - 270px);
     article {
       display: flex;
       flex-direction: row;
