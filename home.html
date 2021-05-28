@@ -37,23 +37,6 @@
           </article>
         </template>
 
-        <template id="basket_template">
-          <article class="basket_article" data-field="">
-            <div>
-              <button class="close_added_beer">x</button>
-              <img class="basket_beer_image" src="" alt="beer image" />
-              <p class="basket_beer_name"></p>
-              <p class="basket_beer_price"></p>
-              <p class="basket_beer_subtotal"></p>
-              <div>
-                <button class="plus_minus">-</button>
-                <input type="text" value="0" disabled class="basket_amount" />
-                <button class="plus_minus">+</button>
-              </div>
-            </div>
-          </article>
-        </template>
-
         <section id="basket">
           <div class="your_order">
             <h3>Your order</h3>
@@ -65,6 +48,8 @@
 
           <div class="payment">
             <h3>Payment method</h3>
+            <span class="pay_alert_message hidden">Please select payment method</span>
+            <span class="pay_alert_message hidden">Feature coming soon, please select other</span>
             <div class="payment_options">
               <button class="payment_icon" data-payment="mobilepay">
                 <img src="/mobilepay.svg" alt="mobilepay" />
@@ -76,6 +61,7 @@
                 <img src="/surface.svg" alt="Basket" />
               </button>
             </div>
+
             <button class="basket_pay">Pay</button>
           </div>
         </section>
