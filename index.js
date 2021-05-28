@@ -155,7 +155,7 @@ function showDetails(beer, beerName) {
 
       const price = 40 * newnewAmount;
       console.log(basketItem);
-      document.querySelector(`.${basket_item_name} p:nth-child(4)`).textContent = price + ",-";
+      document.querySelector(`.${basket_item_name} .subtotal`).textContent = price + ",-";
 
       calculateBasketAmount(basket_item_name);
       restatCounter();
@@ -171,6 +171,7 @@ function showDetails(beer, beerName) {
   document.querySelector(".plus").addEventListener("click", plus);
   document.querySelector(".minus").addEventListener("click", minus);
 
+  setColorOfBackButton(beer);
   setColorsOfBeer(beer);
   addEventListenerToButtons();
 }
@@ -195,9 +196,22 @@ function setColorsOfBeer(beer) {
   }
 }
 
+function setColorOfBackButton(beer) {
+  console.log(beer.name);
+  if (beer.name === "GitHop" || beer.name === "Mowintime") {
+    console.log("sercolor of baxk");
+    document.querySelector(".close_singleview").style.backgroundImage = "url(/back_white.svg)";
+  } else {
+    document.querySelector(".close_singleview").style.backgroundImage = "url(/back.svg)";
+  }
+}
+
 function addEventListenerToButtons() {
   document.querySelectorAll(".description_tabs button").forEach((btn) => {
     btn.addEventListener("click", filterDesc);
+  });
+  document.querySelector(".basket_icon").addEventListener("click", function () {
+    document.querySelector("#basket").style.display = "block";
   });
 }
 
@@ -243,12 +257,11 @@ function calculateBasketAmount(basket_item_name) {
   // let basketPrice = parseInt(document.querySelector(`.${basket_item_name} .basket_text:nth-child(4)`).textContent);
 
   function plusBasket() {
-    console.log("hej plus");
     basketCount++;
     basketCounter.value = basketCount;
     let newBasketPrice = 40 * basketCount;
     let newnewPrice = newBasketPrice.toString();
-    document.querySelector(`.${basket_item_name} .basket_text:nth-child(4)`).textContent = `${newnewPrice},-`;
+    document.querySelector(`.${basket_item_name} .subtotal`).textContent = `${newnewPrice},-`;
     document.querySelector(`.${basket_item_name} .minus_basket`).style.backgroundColor = "white";
     displayTotal();
   }
@@ -259,7 +272,7 @@ function calculateBasketAmount(basket_item_name) {
       basketCounter.value = basketCount;
       let newBasketPrice = 40 * basketCount;
       let newnewPrice = newBasketPrice.toString();
-      document.querySelector(`.${basket_item_name} .basket_text:nth-child(4)`).textContent = `${newnewPrice},-`;
+      document.querySelector(`.${basket_item_name} .subtotal`).textContent = `${newnewPrice},-`;
       displayTotal();
 
       if (basketCount < 2) {
@@ -289,37 +302,37 @@ function createAddedElement(beer, basket_item_name) {
   li.append(div_text);
   div_text.append(div_amount);
 
-  let text = [beer.name, "40,-", price];
+  let text = ["40,-", beer.name];
   text.forEach(function (el) {
     const p = document.createElement("p");
+    console.log(p);
     p.textContent = el;
     p.classList.add("basket_text");
     div_text.append(p);
   });
 
-  const plus_minus_button_value = ["+", "-"];
+  const totalAmount = document.createElement("p");
+  totalAmount.textContent = price;
+  totalAmount.classList.add("subtotal");
+  li.append(totalAmount);
 
-  plus_minus_button_value.forEach(function (el) {
-    const button = document.createElement("button");
-    button.textContent = el;
-
-    if (el === "+") {
-      button.classList.add("plus_minus", "plus_basket");
-    } else {
-      button.classList.add("plus_minus", "minus_basket");
-    }
-
-    div_amount.append(button);
-  });
+  const minus_button = document.createElement("button");
+  minus_button.textContent = "-";
+  minus_button.classList.add("plus_minus", "minus_basket");
+  div_amount.append(minus_button);
 
   const input = document.createElement("input");
   const amount = document.querySelector(".amount").value;
   input.classList.add("basket_amount");
+  div_amount.append(input);
 
   input.value = amount;
   input.disabled = true;
 
-  div_amount.append(input);
+  const plus_button = document.createElement("button");
+  plus_button.textContent = "+";
+  plus_button.classList.add("plus_minus", "plus_basket");
+  div_amount.append(plus_button);
 
   const button = document.createElement("button");
   button.classList.add("remove_added_beer", `remove_${basket_item_name}`);
@@ -335,7 +348,7 @@ function restatCounter() {
 
 function displayTotal() {
   let priceCount = 0;
-  document.querySelectorAll(".basket_text:nth-child(4)").forEach((element) => {
+  document.querySelectorAll(".subtotal").forEach((element) => {
     let itemTotal = parseInt(element.textContent);
     console.log(itemTotal);
     priceCount += itemTotal;
