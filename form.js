@@ -9,30 +9,35 @@ function init() {
   document.querySelector(".pay").addEventListener("click", checkTextValidity);
 }
 
-function checkTextValidity() {
+async function checkTextValidity() {
   const form = document.querySelector("form");
   form.addEventListener("submit", (e) => {
     e.preventDefault();
   });
   if (form.checkValidity()) {
     console.log("form is valid");
-    postOrder();
-    // window.location.href = "process.html";
+    const orderid = await postOrder();
+    console.log(orderid);
+    window.location.href = `process.html?id=${orderid}`;
   } else {
     console.log("form is not valid");
   }
 }
-function postOrder() {
+
+async function postOrder() {
   let order = localStorage.getItem("itemsArray");
   console.log(order);
 
-  fetch("https://hold-kaeft-vi-har-det-godt.herokuapp.com/order", {
+  let jsonData = await fetch("https://hold-kaeft-vi-har-det-godt.herokuapp.com/order", {
     method: "post",
     headers: {
       "Content-Type": "application/json; charset=utf-8",
     },
     body: order,
-  })
-    .then((res) => res.json())
-    .then((order) => console.log(order));
+  });
+  const data = await jsonData.json();
+  return data.id;
+
+  // .then((res) => res.json())
+  // .then((data) => (orderid = data));
 }

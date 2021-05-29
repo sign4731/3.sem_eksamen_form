@@ -67,7 +67,7 @@
       stroke: vars.$ui_color_light;
     }
     circle:nth-child(2) {
-      stroke-dashoffset: calc(530px - (530px * 33.33) / 100);
+      stroke-dashoffset: calc(530px - (530px * 0) / 100);
       stroke: vars.$ui_color_dark;
       transform: rotate(270deg) translate(15px, 15px);
       transform-origin: center;
@@ -80,5 +80,6 @@
     width: 100%;
     height: 100%;
     transform: translate(-50%, -50%);
+    padding-bottom: 7px;
   }
 }
