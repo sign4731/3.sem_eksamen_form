@@ -9,7 +9,7 @@
   border: 1px solid #eaeaea;
   box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.05);
   z-index: 100;
-  @media (min-width: 768px) {
+  @media (min-width: 1000px) {
     display: none;
   }
   img {
@@ -22,6 +22,9 @@
     left: 80%;
     top: 15%;
     transform: translate(-50%);
+    border: none;
+    background: none;
+    padding: 0;
   }
   .basket_icon {
     position: absolute;
@@ -32,12 +35,26 @@
     background: none;
     padding: 0;
     // opacity: 0.5;
+    .basket_number {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 20px;
+      height: 20px;
+      padding: 1px 0px;
+      border-radius: 10px;
+      background: #ababab;
+      color: white;
+    }
   }
   .help_icon {
     position: absolute;
     left: 20%;
     top: 15%;
     transform: translate(-50%);
+    border: none;
+    background: none;
+    padding: 0;
     // opacity: 0.5;
   }
 }

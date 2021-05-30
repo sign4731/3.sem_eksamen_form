@@ -1,4 +1,4 @@
-import "./sass/style.scss";
+import "../../sass/index.scss";
 
 window.addEventListener("DOMContentLoaded", init);
 

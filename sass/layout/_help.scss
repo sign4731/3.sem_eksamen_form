@@ -1,9 +1,17 @@
 @use "../abstracts/vars";
+
 #help_body {
-  display: flex;
+  position: fixed;
+  width: 100vw;
+  top: 0;
+  bottom: 0;
+  overflow-y: scroll;
+  // display: flex;
+  display: none;
   justify-content: center;
   background: vars.$bg_color;
   margin: 0;
+  z-index: 1;
 }
 .back {
   display: none;
@@ -12,6 +20,8 @@
   }
 }
 #help_main {
+  // display: flex;
+  // justify-content: center;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
