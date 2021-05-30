@@ -31,31 +31,22 @@ function showOrderId(orderId) {
 }
 
 function trackOrder(jsonData, orderId) {
+  const queue = jsonData["queue"];
   const serving = jsonData["serving"];
 
   let orderInQueue = null;
-  let servingOrder = false;
-
-  for (let i = 0; i < serving.length; i++) {
-    if (serving[i].id == orderId) {
-      servingOrder = true;
-      orderInQueue = false;
-    } else {
-      servingOrder = false;
-    }
-  }
+  let servingOrder = null;
 
   setCircleTransition();
   setQueueStatus();
   SetServingStatus();
   setOrderDoneStatus();
 
-  console.log(`queue = ${orderInQueue}`);
-  console.log(`serving = ${servingOrder}`);
-
   function setQueueStatus() {
-    if (orderInQueue === null) {
-      orderInQueue = true;
+    for (let i = 0; i < queue.length; i++) {
+      if (queue[i].id == orderId) {
+        orderInQueue = true;
+      }
     }
 
     if (orderInQueue === true) {
@@ -68,6 +59,15 @@ function trackOrder(jsonData, orderId) {
   }
 
   function SetServingStatus() {
+    for (let i = 0; i < serving.length; i++) {
+      if (serving[i].id == orderId) {
+        servingOrder = true;
+        orderInQueue = false;
+      } else {
+        servingOrder = false;
+      }
+    }
+
     if (servingOrder === true) {
       console.log("order is being served");
 
@@ -84,10 +84,21 @@ function trackOrder(jsonData, orderId) {
 
       servingOrder = false;
       orderInQueue = false;
+
+      document.querySelector("#process_body_wrapper").addEventListener("click", returnToHome);
+      setTimeout(() => {
+        returnToHome();
+      }, 15000);
     }
   }
 }
 
 function setCircleTransition() {
   document.querySelector("#process_main > div.percent > svg > circle:nth-child(2)").style.transition = "stroke-dashoffset 1s linear";
+}
+
+function returnToHome() {
+  document.querySelector("#process_body_wrapper").removeEventListener("click", returnToHome);
+
+  window.location.href = `index.html`;
 }
