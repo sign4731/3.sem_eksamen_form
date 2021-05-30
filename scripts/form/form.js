@@ -37,7 +37,4 @@ async function postOrder() {
   });
   const data = await jsonData.json();
   return data.id;
-
-  // .then((res) => res.json())
-  // .then((data) => (orderid = data));
 }

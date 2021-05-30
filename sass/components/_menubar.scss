@@ -6,8 +6,7 @@
   position: fixed;
   bottom: 0;
   background: white;
-  border: 1px solid #eaeaea;
-  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.05);
+  box-shadow: 0 -7px 10px 0 rgb(0 0 0 / 5%);
   z-index: 100;
   @media (min-width: 1000px) {
     display: none;
@@ -43,7 +42,7 @@
       height: 20px;
       padding: 1px 0px;
       border-radius: 10px;
-      background: #ababab;
+      background: vars.$ui_color_dark;
       color: white;
     }
   }
