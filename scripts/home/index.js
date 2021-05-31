@@ -81,7 +81,7 @@ function showDetails(beer, beerName) {
       document.querySelector(".added_beers ul").append(basketItem);
 
       //animate item in
-      document.querySelector(`.${basket_item_name}`).classList.add("backInLeft");
+      // document.querySelector(`.${basket_item_name}`).classList.add("backInLeft");
 
       calculateBasketAmount(basket_item_name);
       restatCounter();
