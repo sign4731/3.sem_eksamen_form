@@ -1,10 +1,14 @@
 import "../../sass/index.scss";
+import IMask from "imask";
 
 ("use strict");
 
 window.addEventListener("DOMContentLoaded", init);
 
 function init() {
+  setCardNumberMask();
+  setExpiryDateMask();
+  document.querySelector(".pay").addEventListener("click", checkTextValidity);
     console.log(localStorage);
     document.querySelector(".pay").addEventListener("click", checkTextValidity);
 
@@ -50,4 +54,20 @@ async function postOrder() {
     );
     const data = await jsonData.json();
     return data.id;
+}
+
+function setCardNumberMask() {
+  const cardnumber = document.querySelector("#cardnumber");
+  const cardnumberOption = {
+    mask: "0000 0000 0000 0000",
+  };
+  const cardnumberMask = IMask(cardnumber, cardnumberOption);
+}
+
+function setExpiryDateMask() {
+  const expiry_date = document.querySelector("#expiry_date");
+  const expiryDateOption = {
+    mask: "00/00",
+  };
+  const expiry_dateMask = IMask(expiry_date, expiryDateOption);
 }
