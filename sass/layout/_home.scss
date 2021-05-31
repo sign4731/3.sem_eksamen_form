@@ -297,6 +297,11 @@
   color: vars.$ui_color_dark;
   box-shadow: 0.5px 0.5px 2px #86868644;
   padding-top: 1.7px;
+
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .added_beers .plus_minus {
