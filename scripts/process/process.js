@@ -71,7 +71,7 @@ function trackOrder(jsonData, orderId) {
     if (servingOrder === true) {
       console.log("order is being served");
 
-      document.querySelector(".ill").src = "/public/preparing-order.svg";
+      document.querySelector(".ill").src = "/preparing-order.svg";
       document.querySelector("#process_main svg circle:nth-child(2)").style.strokeDashoffset = "calc(530px - (530px * 66.66) / 100)";
     }
   }
@@ -79,7 +79,7 @@ function trackOrder(jsonData, orderId) {
   function setOrderDoneStatus() {
     if (orderInQueue === false && servingOrder === false) {
       console.log("order is done");
-      document.querySelector(".ill").src = "/public/order-done.svg";
+      document.querySelector(".ill").src = "/order-done.svg";
       document.querySelector("#process_main svg circle:nth-child(2)").style.strokeDashoffset = "calc(530px - (530px * 100) / 100)";
 
       servingOrder = false;
