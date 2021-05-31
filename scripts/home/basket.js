@@ -62,7 +62,14 @@ export function calculateBasketAmount(basket_item_name) {
 export function removeBasketItem(basketItem, basket_item_name) {
   console.log("you want to remove", basketItem);
   document.querySelector(`.remove_${basket_item_name}`).removeEventListener("click", removeBasketItem);
-  basketItem.remove();
+
+  //animate item out
+  document.querySelector(`.${basket_item_name}`).classList.add("backOutRight");
+
+  setTimeout(() => {
+    basketItem.remove();
+  }, 1000);
+
   basket[basketItem.dataset.field] = false;
   displayTotal();
 }

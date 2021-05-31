@@ -75,13 +75,13 @@ function showDetails(beer, beerName) {
   document.querySelector(".add_beer").addEventListener("click", addToBasket);
 
   function addToBasket() {
-    console.log(basket_item_name, "is added to basket");
     const basketItem = createAddedElement(beer, basket_item_name);
-
     if (!basket[basketItem.dataset.field]) {
-      console.log(basket_item_name);
       basket[basketItem.dataset.field] = true;
       document.querySelector(".added_beers ul").append(basketItem);
+
+      //animate item in
+      document.querySelector(`.${basket_item_name}`).classList.add("backInLeft");
 
       calculateBasketAmount(basket_item_name);
       restatCounter();
