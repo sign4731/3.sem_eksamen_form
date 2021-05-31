@@ -5,6 +5,7 @@ export function displayTotal() {
     console.log(itemTotal);
     priceCount += itemTotal;
   });
+
   console.log("this is price count", priceCount);
   let stringifiedPrice = priceCount.toString();
   console.log("price as string", stringifiedPrice);
@@ -30,7 +31,6 @@ export function calculateBasketAmount(basket_item_name) {
 
   let basketCounter = document.querySelector(`.${basket_item_name} .basket_amount`);
   let basketCount = basketCounter.value;
-  // let basketPrice = parseInt(document.querySelector(`.${basket_item_name} .basket_text:nth-child(4)`).textContent);
 
   function plusBasket() {
     basketCount++;
