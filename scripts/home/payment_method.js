@@ -12,7 +12,7 @@ export function getPaymentMethod() {
         button.style.fill = "#343331";
       });
 
-      document.querySelector(".basket_pay").style.opacity = 1;
+      checkIfBasketIsEmpty();
 
       paymentMethod[button.dataset.payment] = true;
 
@@ -31,4 +31,15 @@ export function getPaymentMethod() {
       });
     });
   });
+}
+
+function checkIfBasketIsEmpty() {
+  const basketList = document.querySelectorAll(".added_beers ul li");
+  console.log(basketList);
+
+  for (let i = 0; i <= basketList.length; i++) {
+    if (basketList.length >= 1) {
+      document.querySelector(".basket_pay").style.opacity = 1;
+    }
+  }
 }
