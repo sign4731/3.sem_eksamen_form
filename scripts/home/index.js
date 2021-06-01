@@ -83,6 +83,7 @@ function showDetails(beer, beerName) {
       //animate item in
       document.querySelector(`.${basket_item_name}`).classList.add("backInLeft");
 
+      checkIfPaymentIsChosen();
       calculateBasketAmount(basket_item_name);
       restatCounter();
     } else if (basket[basketItem.dataset.field]) {
@@ -143,4 +144,12 @@ function removeBasketAnimationClass(basket_item_name) {
   setTimeout(() => {
     document.querySelector(`.${basket_item_name}`).classList.remove("backInLeft");
   }, 1000);
+}
+
+function checkIfPaymentIsChosen() {
+  document.querySelectorAll(".payment_icon").forEach(function (method) {
+    if (method.classList.contains("chosen")) {
+      document.querySelector(".basket_pay").style.opacity = 1;
+    }
+  });
 }

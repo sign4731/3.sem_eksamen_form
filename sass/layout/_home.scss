@@ -1,6 +1,7 @@
 @use "../abstracts/vars";
 :root {
   --colored_bg: vars.$ui_color_light;
+  --pressed-payment: ;
 }
 
 #beerlist_container {
@@ -74,53 +75,61 @@
       padding: 40px 0;
 
       li {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        height: 121px;
 
-        position: relative;
-
-        margin-bottom: 40px;
-
-        .subtotal {
-          color: grey;
-          font-size: 12px;
-          align-self: flex-end;
-          margin-bottom: 1%;
-          width: 40px;
-          text-align: end;
-        }
-        > div {
+        .content {
           display: flex;
-          flex-direction: column-reverse;
           justify-content: space-between;
-          margin-left: -30px;
-          min-height: 80px;
+          align-items: center;
+          height: 92px;
 
-          p:nth-child(3) {
-            width: 65px;
-            color: vars.$ui_color_dark;
-            align-self: flex-start;
-          }
-          p:nth-child(2) {
-            padding: 3px 0;
-            font-weight: 600;
+          position: relative;
+
+          input {
+            opacity: 1 !important;
+            -webkit-text-fill-color: vars.$ui_color_dark;
           }
 
+          .subtotal {
+            color: rgb(80, 80, 80);
+            font-size: 12px;
+            align-self: flex-end;
+            margin-bottom: 1%;
+            width: 40px;
+            text-align: end;
+          }
           > div {
             display: flex;
+            flex-direction: column-reverse;
+            justify-content: space-between;
+            margin-left: -30px;
+            min-height: 80px;
+
+            p:nth-child(3) {
+              width: 65px;
+              color: vars.$ui_color_dark;
+              align-self: flex-start;
+            }
+            p:nth-child(2) {
+              padding: 3px 0;
+              font-weight: 600;
+            }
+
+            > div {
+              display: flex;
+            }
           }
+        }
+
+        img {
+          width: 60px;
+          margin-left: -5px;
         }
       }
 
-      img {
-        width: 60px;
-        margin-left: -5px;
+      h3 {
+        padding-top: 20px;
       }
-    }
-
-    h3 {
-      padding-top: 20px;
     }
   }
 
@@ -158,11 +167,27 @@
       justify-content: space-between;
       padding: 30px 0;
 
+      div {
+        width: 60px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+
+        button {
+          align-self: center;
+        }
+      }
+      p {
+        padding-top: 10px;
+        text-align: center;
+      }
+
       .chosen {
-        background: #dfdfdf;
+        background: vars.$ui_color_dark;
         transform-origin: center;
         transform: scale(1.1);
         transition: 0.3s;
+        fill: white;
       }
       button {
         height: 45px;
@@ -264,6 +289,11 @@
 
   h1 {
     padding-bottom: 15px;
+  }
+
+  input {
+    opacity: 1 !important;
+    -webkit-text-fill-color: vars.$ui_color_dark;
   }
 }
 
@@ -377,5 +407,3 @@
     }
   }
 }
-
-

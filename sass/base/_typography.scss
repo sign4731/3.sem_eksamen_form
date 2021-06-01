@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Train+One&display=swap");
 
 h1 {
-  font-family: "Train One", cursive;
+  font-family: "Train One", sans-serif;
   font-size: 20px;
   line-height: 72px;
   color: vars.$ui_color_dark;
@@ -114,4 +114,9 @@ input {
   font-size: 14px;
   line-height: 21px;
   color: black;
+}
+
+.payment_options p {
+  font-size: 10px;
+  color: vars.$ui_color_dark;
 }
