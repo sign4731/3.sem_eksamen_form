@@ -145,6 +145,10 @@ function checkIfBasketIsEmpty() {
   for (let i = 0; i <= basketListItems.length; i++) {
     if (basketListItems.length === 1) {
       document.querySelector(".basket_pay").style.opacity = 0.2;
+
+      setTimeout(() => {
+        document.querySelector(".empty_basket").style.display = "block";
+      }, 1000);
     }
   }
 }
