@@ -1,3 +1,4 @@
+import { basket } from "./order";
 export function displayTotal() {
   let priceCount = 0;
   document.querySelectorAll(".subtotal").forEach((element) => {
