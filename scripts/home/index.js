@@ -81,7 +81,7 @@ function showDetails(beer, beerName) {
       document.querySelector(".added_beers ul").append(basketItem);
 
       //animate item in
-      // document.querySelector(`.${basket_item_name}`).classList.add("backInLeft");
+      document.querySelector(`.${basket_item_name}`).classList.add("backInLeft");
 
       calculateBasketAmount(basket_item_name);
       restatCounter();
@@ -101,6 +101,7 @@ function showDetails(beer, beerName) {
       restatCounter();
     }
 
+    removeBasketAnimationClass(basket_item_name);
     displayTotal();
 
     document.querySelector(`.remove_${basket_item_name}`).addEventListener("click", () => {
@@ -136,4 +137,10 @@ export function minus() {
       document.querySelector(".minus").style.backgroundColor = "#f4f4f4";
     }
   }
+}
+
+function removeBasketAnimationClass(basket_item_name) {
+  setTimeout(() => {
+    document.querySelector(`.${basket_item_name}`).classList.remove("backInLeft");
+  }, 1000);
 }
