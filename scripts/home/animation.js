@@ -1,6 +1,6 @@
 import { gsap } from "gsap";
 
-export default function startStaggerAnimation() {
+export function startStaggerAnimation() {
   gsap.from(".card", {
     duration: 0.5,
     scale: 0.5,
@@ -10,4 +10,8 @@ export default function startStaggerAnimation() {
     ease: "ease-in-out",
     force3D: true,
   });
+}
+
+export function startBasketAnimation() {
+  gsap.to("#basket", { duration: 1, x: 0 });
 }
