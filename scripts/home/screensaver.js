@@ -1,4 +1,4 @@
-import startStaggerAnimation from "./stagger_animation";
+import { startStaggerAnimation, startBasketAnimation } from "./animation";
 export function addEventListenerToScreensaver() {
   document.querySelector("#screensaver").addEventListener("click", removeScreensaver);
 
@@ -7,5 +7,9 @@ export function addEventListenerToScreensaver() {
     document.querySelector("#screensaver").removeEventListener("click", removeScreensaver);
 
     startStaggerAnimation();
+    let viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+    if (viewportWidth >= 1000) {
+      startBasketAnimation();
+    }
   }
 }

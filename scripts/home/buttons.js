@@ -1,3 +1,4 @@
+import { animationOnPages } from "./animation";
 let filter = "flavor";
 
 export function addEventListenerToButtons() {
@@ -6,33 +7,42 @@ export function addEventListenerToButtons() {
   });
   document.querySelector(".basket_icon").addEventListener("click", function () {
     document.querySelector("#basket").style.display = "block";
-    document.querySelector("#help_body").style.display = "none";
+    animationOnPages(`#basket`, `1`);
+
+    animationOnPages(`#help_body`, `0`);
+
     document.querySelector(".basket_icon").classList.add("chosen");
     document.querySelector(".home_icon").classList.remove("chosen");
     document.querySelector(".help_icon").classList.remove("chosen");
   });
   document.querySelector(".help_icon").addEventListener("click", function () {
-    document.querySelector("#help_body").style.display = "flex";
+    // document.querySelector("#help_body").style.display = "flex";
+    animationOnPages(`#help_body`, `1`);
+
+    animationOnPages(`#basket`, `0`);
     document.querySelector(".help_icon").classList.add("chosen");
     document.querySelector(".home_icon").classList.remove("chosen");
     document.querySelector(".basket_icon").classList.remove("chosen");
   });
   document.querySelector(".home_icon").addEventListener("click", function () {
-    document.querySelector("#basket").style.display = "none";
-    document.querySelector("#help_body").style.display = "none";
+    animationOnPages(`#help_body`, `0`);
+    animationOnPages(`#basket`, `0`);
+
     document.querySelector("#singleview").style.display = "none";
     document.querySelector(".home_icon").classList.add("chosen");
     document.querySelector(".help_icon").classList.remove("chosen");
     document.querySelector(".basket_icon").classList.remove("chosen");
   });
   document.querySelector(".help_logo").addEventListener("click", function () {
+    animationOnPages(`#help_body`, `1`);
     document.querySelector("#help_body").style.display = "flex";
     document.querySelector(".close_helpview").addEventListener("click", goBack);
   });
 
   function goBack() {
     console.log("back help clicked");
-    document.querySelector("#help_body").style.display = "none";
+    animationOnPages(`#help_body`, `0`);
+    // document.querySelector("#help_body").style.display = "none";
     document.querySelector(".back").removeEventListener("click", goBack);
   }
 }
