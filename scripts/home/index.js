@@ -8,7 +8,6 @@ import { addEventListenerToButtons } from "./buttons";
 
 const countEl = document.querySelector(".amount");
 let count = countEl.value;
-Loader.start();
 
 window.addEventListener("load", init);
 
@@ -16,7 +15,6 @@ function init() {
   addEventListenerToScreensaver();
   getData();
   addEventListenerToButtons();
-  Loader.stop();
 }
 
 async function getData() {

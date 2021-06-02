@@ -1,0 +1,16 @@
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
+export default function startStaggerAnimation() {
+  gsap.from(".card", {
+    duration: 0.5,
+    scale: 0.5,
+    opacity: 0,
+    delay: 0,
+    stagger: 0.1,
+    ease: "ease-in-out",
+    force3D: true,
+  });
+}
