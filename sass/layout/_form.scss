@@ -34,10 +34,18 @@
     }
     label {
       margin-left: 1.5px;
+      font-weight: 300;
+      color: vars.$ui_color_dark;
     }
     p {
       margin-left: 1.5px;
-      padding-bottom: 20px;
+      padding: 20px 0;
+
+      display: flex;
+      justify-content: space-between;
+    }
+    .payment_amount {
+      margin-right: 1.5px;
     }
     div > div:nth-child(2) > label {
       margin-left: 17px;

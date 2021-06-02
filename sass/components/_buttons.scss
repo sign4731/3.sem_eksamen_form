@@ -1,14 +1,14 @@
 @use "../abstracts/vars";
 
 .pay {
-  // position: absolute;
   width: 299px;
   height: 38px;
-  // left: 446px;
-  // top: 589px;
   background: vars.$ui_color_dark;
   border-radius: 5px;
   border: none;
+
+  opacity: 0.2;
+  transition: 0.3s;
 }
 
 .basket_pay {
@@ -17,6 +17,9 @@
   background: vars.$ui_color_dark;
   border-radius: 5px;
   border: none;
+
+  opacity: 0.2;
+  transition: 0.3s;
 }
 
 .add_beer {
@@ -32,4 +35,7 @@
   background-color: vars.$ui_color_dark !important;
   border-radius: 5px !important;
   color: vars.$ui_color_light !important;
+
+  transition: 0.3s;
+  transform: scale(1.04);
 }

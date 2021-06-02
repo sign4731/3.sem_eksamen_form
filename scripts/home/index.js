@@ -66,7 +66,7 @@ function showDetails(beer, beerName) {
     document.querySelector(".plus").removeEventListener("click", plus);
     document.querySelector(".minus").removeEventListener("click", minus);
     document.querySelector(".add_beer").removeEventListener("click", addToBasket);
-    // document.querySelector(".remove_added_beer").removeEventListener("click", removeBasketItem);
+
     restatCounter();
   });
 
@@ -83,6 +83,8 @@ function showDetails(beer, beerName) {
       //animate item in
       document.querySelector(`.${basket_item_name}`).classList.add("backInLeft");
 
+      checkIfPaymentIsChosen();
+      removeEmptyBasketText();
       calculateBasketAmount(basket_item_name);
       restatCounter();
     } else if (basket[basketItem.dataset.field]) {
@@ -119,6 +121,8 @@ function showDetails(beer, beerName) {
 function restatCounter() {
   document.querySelector(".amount").value = 1;
   count = 1;
+
+  document.querySelector(".minus").style.backgroundColor = "#f4f4f4";
 }
 
 export function plus() {
@@ -143,4 +147,16 @@ function removeBasketAnimationClass(basket_item_name) {
   setTimeout(() => {
     document.querySelector(`.${basket_item_name}`).classList.remove("backInLeft");
   }, 1000);
+}
+
+function checkIfPaymentIsChosen() {
+  document.querySelectorAll(".payment_icon").forEach(function (method) {
+    if (method.classList.contains("chosen")) {
+      document.querySelector(".basket_pay").style.opacity = 1;
+    }
+  });
+}
+
+function removeEmptyBasketText() {
+  document.querySelector(".empty_basket").style.display = "none";
 }

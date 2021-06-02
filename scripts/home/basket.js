@@ -71,6 +71,7 @@ export function removeBasketItem(basketItem, basket_item_name) {
     basketItem.remove();
   }, 1000);
 
+  checkIfBasketIsEmpty();
   basket[basketItem.dataset.field] = false;
   displayTotal();
 }
@@ -85,13 +86,16 @@ export function createAddedElement(beer, basket_item_name) {
   li.classList.add(basket_item_name);
   li.dataset.field = beer.name;
 
+  const content = document.createElement("div");
+  content.classList.add("content");
+
   const img = document.createElement("img");
   img.src = `beer_images_with_circle/${beer.name}.png`;
-  li.append(img);
+  content.append(img);
 
   const div_text = document.createElement("div");
   const div_amount = document.createElement("div");
-  li.append(div_text);
+  content.append(div_text);
   div_text.append(div_amount);
 
   let text = ["40,-", beer.name];
@@ -106,7 +110,7 @@ export function createAddedElement(beer, basket_item_name) {
   const totalAmount = document.createElement("p");
   totalAmount.textContent = price;
   totalAmount.classList.add("subtotal");
-  li.append(totalAmount);
+  content.append(totalAmount);
 
   const minus_button = document.createElement("button");
   minus_button.textContent = "-";
@@ -128,7 +132,23 @@ export function createAddedElement(beer, basket_item_name) {
 
   const button = document.createElement("button");
   button.classList.add("remove_added_beer", `remove_${basket_item_name}`);
-  li.append(button);
+  content.append(button);
+
+  li.append(content);
 
   return li;
+}
+
+function checkIfBasketIsEmpty() {
+  const basketListItems = document.querySelectorAll(".added_beers ul li");
+  console.log(basketListItems);
+  for (let i = 0; i <= basketListItems.length; i++) {
+    if (basketListItems.length === 1) {
+      document.querySelector(".basket_pay").style.opacity = 0.2;
+
+      setTimeout(() => {
+        document.querySelector(".empty_basket").style.display = "block";
+      }, 1000);
+    }
+  }
 }

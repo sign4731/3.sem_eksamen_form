@@ -11,7 +11,7 @@ function init() {
   document.querySelector(".pay").addEventListener("click", checkTextValidity);
   console.log(localStorage);
   document.querySelector(".pay").addEventListener("click", checkTextValidity);
-
+  showButtonWhenValid();
   showPaymentAmount();
 }
 
@@ -19,6 +19,19 @@ function showPaymentAmount() {
   let paymentAmount = localStorage.getItem("paymentAmount");
 
   document.querySelector(".payment_amount").textContent = `${paymentAmount},-`;
+}
+
+function showButtonWhenValid() {
+  console.log(document.querySelectorAll("form input"));
+  document.querySelectorAll("form input").forEach((input) => {
+    input.addEventListener("keyup", checkFormValidity);
+
+    function checkFormValidity() {
+      if (document.querySelector("form").checkValidity()) {
+        document.querySelector(".pay").style.opacity = 1;
+      }
+    }
+  });
 }
 
 async function checkTextValidity() {
