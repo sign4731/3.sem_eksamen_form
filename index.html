@@ -3,6 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="node_modules/@momsfriendlydevco/angular-ui-loader/dist/loader.css" />
+    <script src="node_modules/@momsfriendlydevco/angular-ui-loader/dist/loader.js"></script>
     <title>Home</title>
   </head>
 
@@ -64,10 +66,6 @@
       </nav>
     </header>
     <main>
-      <section id="loading">
-        <div class="ld ld-ring ld-cycle-alt"></div>
-      </section>
-
       <div class="beer_wrapper">
         <section id="beerlist_container"></section>
 
@@ -249,6 +247,10 @@
         <div class="col"></div>
         <h1>TAP TO ORDER</h1>
       </section>
+
+      <footer>
+        <p>Toggle full screen mode</p>
+      </footer>
     </main>
 
     <script type="module" src="/scripts/home/index.js"></script>

@@ -8,18 +8,15 @@ import { addEventListenerToButtons } from "./buttons";
 
 const countEl = document.querySelector(".amount");
 let count = countEl.value;
+Loader.start();
 
-window.addEventListener("DOMContentLoaded", init);
+window.addEventListener("load", init);
 
 function init() {
-  setTimeout(removeLoading, 500);
   addEventListenerToScreensaver();
   getData();
   addEventListenerToButtons();
-}
-
-function removeLoading() {
-  document.querySelector("#loading").classList.add("hidden_fade");
+  Loader.stop();
 }
 
 async function getData() {
@@ -53,6 +50,7 @@ function showDetails(beer, beerName) {
   console.log(beer);
   const details = document.querySelector("#singleview");
   details.style.display = "block";
+  Loader.start();
 
   details.querySelector(".sv_beer_image").src = `beer_images_shadow/${beerName}.png`;
   details.querySelector(".sv_beer_name").textContent = beer.name;
@@ -64,6 +62,8 @@ function showDetails(beer, beerName) {
   details.querySelector(".appearence_desc").textContent = beer.description.appearance;
   details.querySelector(".flavor_desc").textContent = beer.description.flavor;
   details.querySelector(".mouthfeel_desc").textContent = beer.description.mouthfeel;
+
+  Loader.stop();
 
   document.querySelector(".close_singleview").addEventListener("click", function () {
     details.style.display = "none";
