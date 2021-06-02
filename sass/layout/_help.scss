@@ -6,8 +6,10 @@
   top: 0;
   bottom: 0;
   overflow-y: scroll;
-  // display: flex;
-  display: none;
+  display: flex;
+  // display: none;
+  opacity: 0;
+  pointer-events: none;
   justify-content: center;
   background: vars.$bg_color;
   margin: 0;
