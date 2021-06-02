@@ -15,6 +15,7 @@ function init() {
   addEventListenerToScreensaver();
   getData();
   addEventListenerToButtons();
+  console.log("page is loaded");
 }
 
 async function getData() {
@@ -48,7 +49,6 @@ function showDetails(beer, beerName) {
   console.log(beer);
   const details = document.querySelector("#singleview");
   details.style.display = "block";
-  Loader.start();
 
   details.querySelector(".sv_beer_image").src = `beer_images_shadow/${beerName}.png`;
   details.querySelector(".sv_beer_name").textContent = beer.name;
@@ -60,8 +60,6 @@ function showDetails(beer, beerName) {
   details.querySelector(".appearence_desc").textContent = beer.description.appearance;
   details.querySelector(".flavor_desc").textContent = beer.description.flavor;
   details.querySelector(".mouthfeel_desc").textContent = beer.description.mouthfeel;
-
-  Loader.stop();
 
   document.querySelector(".close_singleview").addEventListener("click", function () {
     details.style.display = "none";
