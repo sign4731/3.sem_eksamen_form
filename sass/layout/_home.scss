@@ -189,13 +189,6 @@
         text-align: center;
       }
 
-      .chosen {
-        background: vars.$ui_color_dark;
-        transform-origin: center;
-        transform: scale(1.1);
-        transition: 0.3s;
-        fill: white;
-      }
       button {
         height: 45px;
         width: 45px;
