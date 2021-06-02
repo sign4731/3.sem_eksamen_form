@@ -29,7 +29,9 @@ export function addEventListenerToButtons() {
     document.querySelector("#help_body").style.display = "flex";
     document.querySelector(".close_helpview").addEventListener("click", goBack);
   });
+
   function goBack() {
+    console.log("back help clicked");
     document.querySelector("#help_body").style.display = "none";
     document.querySelector(".back").removeEventListener("click", goBack);
   }
