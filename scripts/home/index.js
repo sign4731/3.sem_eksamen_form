@@ -5,6 +5,7 @@ import { pressingOrder, basket } from "./order";
 import { displayTotal, calculateBasketAmount, removeBasketItem, createAddedElement } from "./basket";
 import { setColorsOfBeer, setColorOfBackButton } from "./colors";
 import { addEventListenerToButtons } from "./buttons";
+import { getTapData } from "./tapstatus";
 
 const countEl = document.querySelector(".amount");
 let count = countEl.value;
@@ -34,12 +35,13 @@ async function getData() {
     clone.querySelector(".beer_name").textContent = beer.name;
     clone.querySelector(".price").textContent = "40,-";
     clone.querySelector(".alc").textContent = beer.alc + "% alc.";
-
+    clone.querySelector(".template-article").dataset.beer = `${beer.name} article`;
     clone.querySelector(".template-article").addEventListener("click", () => showDetails(beer, beerName));
 
     container.appendChild(clone);
   });
 
+  getTapData(jsonData);
   getPaymentMethod();
   document.querySelector(".basket_pay").addEventListener("click", pressingOrder);
 }
