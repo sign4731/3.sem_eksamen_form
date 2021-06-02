@@ -5,6 +5,7 @@ import { pressingOrder, basket } from "./order";
 import { displayTotal, calculateBasketAmount, removeBasketItem, createAddedElement } from "./basket";
 import { setColorsOfBeer, setColorOfBackButton } from "./colors";
 import { addEventListenerToButtons } from "./buttons";
+import { removeLoader, showLoader } from "./loader";
 
 const countEl = document.querySelector(".amount");
 let count = countEl.value;
@@ -15,6 +16,7 @@ function init() {
   addEventListenerToScreensaver();
   getData();
   addEventListenerToButtons();
+  removeLoader();
   console.log("page is loaded");
 }
 
@@ -46,6 +48,7 @@ async function getData() {
 }
 
 function showDetails(beer, beerName) {
+  showLoader();
   console.log(beer);
   const details = document.querySelector("#singleview");
   details.style.display = "block";
@@ -60,6 +63,8 @@ function showDetails(beer, beerName) {
   details.querySelector(".appearence_desc").textContent = beer.description.appearance;
   details.querySelector(".flavor_desc").textContent = beer.description.flavor;
   details.querySelector(".mouthfeel_desc").textContent = beer.description.mouthfeel;
+
+  removeLoader();
 
   document.querySelector(".close_singleview").addEventListener("click", function () {
     details.style.display = "none";
