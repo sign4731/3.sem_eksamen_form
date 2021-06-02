@@ -2,7 +2,7 @@
 
 .menubar {
   width: 100vw;
-  height: 50px;
+  height: 80px;
   position: fixed;
   bottom: 0;
   background: white;
@@ -11,14 +11,17 @@
   @media (min-width: 1000px) {
     display: none;
   }
-  img {
+
+  svg {
     width: 35px;
     height: 35px;
   }
 
   .home_icon {
     position: absolute;
-    left: 80%;
+    // left: 80%;
+    // top: 15%;
+    left: 50%;
     top: 15%;
     transform: translate(-50%);
     border: none;
@@ -27,7 +30,9 @@
   }
   .basket_icon {
     position: absolute;
-    left: 50%;
+    // left: 50%;
+    // top: 15%;
+    left: 80%;
     top: 15%;
     transform: translate(-50%);
     border: none;
@@ -42,7 +47,8 @@
       height: 20px;
       padding: 1px 0px;
       border-radius: 10px;
-      background: vars.$ui_color_dark;
+      // background: vars.$ui_color_dark;
+      background: vars.$red;
       color: white;
     }
   }
@@ -55,5 +61,19 @@
     background: none;
     padding: 0;
     // opacity: 0.5;
+  }
+
+  .menubar_button_styling {
+    padding: 10px 10px;
+    border: 1px solid #f4f4f4;
+    border-radius: 50%;
+    text-align: center;
+    background-color: #f4f4f4;
+    display: flex;
+  }
+
+  .is_active {
+    background-color: vars.$ui_color_dark;
+    fill: vars.$ui_color_light;
   }
 }
