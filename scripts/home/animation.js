@@ -6,7 +6,7 @@ export function startStaggerAnimation() {
     scale: 0.5,
     opacity: 0,
     delay: 0.5,
-    stagger: 0.1,
+    stagger: 0.2,
     ease: "ease-in-out",
     force3D: true,
   });

@@ -64,8 +64,6 @@ function showDetails(beer, beerName) {
   details.querySelector(".flavor_desc").textContent = beer.description.flavor;
   details.querySelector(".mouthfeel_desc").textContent = beer.description.mouthfeel;
 
-  removeLoader();
-
   document.querySelector(".close_singleview").addEventListener("click", function () {
     details.style.display = "none";
 
@@ -119,7 +117,7 @@ function showDetails(beer, beerName) {
 
   document.querySelector(".plus").addEventListener("click", plus);
   document.querySelector(".minus").addEventListener("click", minus);
-
+  removeLoader();
   setColorOfBackButton(beer);
   setColorsOfBeer(beer);
 }
