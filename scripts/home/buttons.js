@@ -7,17 +7,27 @@ export function addEventListenerToButtons() {
   document.querySelector(".basket_icon").addEventListener("click", function () {
     document.querySelector("#basket").style.display = "block";
     document.querySelector("#help_body").style.display = "none";
+    document.querySelector(".basket_icon").classList.add("is_active");
+    document.querySelector(".home_icon").classList.remove("is_active");
+    document.querySelector(".help_icon").classList.remove("is_active");
   });
   document.querySelector(".help_icon").addEventListener("click", function () {
     document.querySelector("#help_body").style.display = "flex";
+    document.querySelector(".help_icon").classList.add("is_active");
+    document.querySelector(".home_icon").classList.remove("is_active");
+    document.querySelector(".basket_icon").classList.remove("is_active");
   });
   document.querySelector(".home_icon").addEventListener("click", function () {
     document.querySelector("#basket").style.display = "none";
     document.querySelector("#help_body").style.display = "none";
+    document.querySelector("#singleview").style.display = "none";
+    document.querySelector(".home_icon").classList.add("is_active");
+    document.querySelector(".help_icon").classList.remove("is_active");
+    document.querySelector(".basket_icon").classList.remove("is_active");
   });
   document.querySelector(".help_logo").addEventListener("click", function () {
     document.querySelector("#help_body").style.display = "flex";
-    document.querySelector(".back").addEventListener("click", goBack);
+    document.querySelector(".close_helpview").addEventListener("click", goBack);
   });
   function goBack() {
     document.querySelector("#help_body").style.display = "none";

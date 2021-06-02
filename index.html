@@ -9,19 +9,57 @@
   <body>
     <header>
       <div class="home_logo"></div>
-      <div class="help_logo"></div>
+      <div class="help_logo">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <g data-name="Layer 2">
+            <g data-name="question-mark">
+              <rect width="24" height="24" transform="rotate(180 12 12)" opacity="0" />
+              <path d="M17 9A5 5 0 0 0 7 9a1 1 0 0 0 2 0 3 3 0 1 1 3 3 1 1 0 0 0-1 1v2a1 1 0 0 0 2 0v-1.1A5 5 0 0 0 17 9z" />
+              <circle cx="12" cy="19" r="1" />
+            </g>
+          </g>
+        </svg>
+      </div>
       <nav class="menubar">
-        <button class="help_icon">
-          <img src="/public/question-mark-circle-outline.svg" alt="Help" />
+        <button class="help_icon menubar_button_styling">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <g data-name="Layer 2">
+              <g data-name="question-mark">
+                <path d="M17 9A5 5 0 0 0 7 9a1 1 0 0 0 2 0 3 3 0 1 1 3 3 1 1 0 0 0-1 1v2a1 1 0 0 0 2 0v-1.1A5 5 0 0 0 17 9z" />
+                <circle cx="12" cy="19" r="1" />
+              </g>
+            </g>
+          </svg>
         </button>
-        <div class="menubar_circle"></div>
-        <div class="menubar_box"></div>
-        <button class="basket_icon">
-          <img src="/public/shopping-cart-outline.svg" alt="Basket" />
+        <button class="basket_icon menubar_button_styling">
           <span class="basket_number hidden">0</span>
+          <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 24" style="enable-background: new 0 0 24 24" xml:space="preserve">
+            <g>
+              <g>
+                <path
+                  class="st1"
+                  d="M21.1,7c-0.4-0.6-1-1-1.7-1H6.6L6,3.7C5.9,3.3,5.5,3,5,3H3C2.4,3,2,3.4,2,4s0.4,1,1,1h1.2L7,15.3
+			C7.1,15.7,7.5,16,8,16h9c0.4,0,0.7-0.2,0.9-0.6l3.3-6.6C21.5,8.3,21.4,7.6,21.1,7z M16.4,14H8.8L7.1,8h12.3L16.4,14z"
+                />
+                <circle class="st1" cx="7.5" cy="19.5" r="1.5" />
+                <circle class="st1" cx="17.5" cy="19.5" r="1.5" />
+              </g>
+            </g>
+          </svg>
         </button>
-        <button class="home_icon">
-          <img src="/public/home-outline.svg" alt="Home" />
+        <button class="home_icon menubar_button_styling is_active">
+          <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 24" style="enable-background: new 0 0 24 24" xml:space="preserve">
+            <g>
+              <g>
+                <path
+                  class="st1"
+                  d="M20.4,10.2l-7.7-7.9c-0.4-0.4-1-0.4-1.4,0c0,0,0,0,0,0l-7.7,7.9C3.2,10.6,3,11.1,3,11.6V20
+			c0,1.1,0.8,1.9,1.9,2h14.2c1.1-0.1,1.9-0.9,1.9-2v-8.4C21,11.1,20.8,10.6,20.4,10.2z M10,20v-6h4v6H10z M19,20h-3v-7
+			c0-0.6-0.4-1-1-1H9c-0.6,0-1,0.4-1,1v7H5v-8.4l7-7.2l7,7.2V20z"
+                />
+              </g>
+            </g>
+          </svg>
         </button>
       </nav>
     </header>
@@ -72,7 +110,7 @@
       </div>
 
       <section id="singleview">
-        <button class="close_singleview"></button>
+        <button class="back close_singleview"></button>
         <article>
           <div class="colored_bg">
             <img class="sv_beer_image" alt="beer image" />
@@ -111,7 +149,7 @@
       </section>
 
       <section id="help_body">
-        <a class="back"></a>
+        <button class="back close_helpview"></button>
         <div id="help_main">
           <div class="help_element">
             <div class="illustration">

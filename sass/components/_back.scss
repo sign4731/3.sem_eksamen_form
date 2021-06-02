@@ -8,21 +8,15 @@
   top: 31px;
   background-repeat: no-repeat;
   background-image: url(/back.svg);
-  display: none;
+  display: block;
+  border: none;
+  background-size: cover;
+  background-color: transparent;
+}
 
+.close_helpview {
+  display: none;
   @media (min-width: 1000px) {
     display: block;
   }
-}
-
-.close_singleview {
-  position: absolute;
-  width: 32px;
-  height: 23px;
-  left: 29px;
-  top: 31px;
-  background-repeat: no-repeat;
-  background-image: url(/back.svg);
-  background-color: transparent;
-  border: none;
 }
