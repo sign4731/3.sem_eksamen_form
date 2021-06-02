@@ -12,9 +12,14 @@ let count = countEl.value;
 window.addEventListener("DOMContentLoaded", init);
 
 function init() {
+  setTimeout(removeLoading, 500);
   addEventListenerToScreensaver();
   getData();
   addEventListenerToButtons();
+}
+
+function removeLoading() {
+  document.querySelector("#loading").classList.add("hidden_fade");
 }
 
 async function getData() {
