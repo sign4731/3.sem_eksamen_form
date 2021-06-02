@@ -17,6 +17,7 @@ function init() {
   getData();
   addEventListenerToButtons();
   removeLoader();
+  console.log("page is loaded");
 }
 
 async function getData() {
