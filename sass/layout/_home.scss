@@ -6,9 +6,9 @@
   margin-bottom: 120px;
   width: 100vw;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
   justify-items: center;
-  grid-gap: 20px;
+  grid-gap: 25px;
 
   article {
     position: relative;
@@ -38,7 +38,7 @@
 
 @media screen and (min-width: 500px) {
   #beerlist_container {
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
     grid-gap: 50px;
     padding: 0 70px;
   }
