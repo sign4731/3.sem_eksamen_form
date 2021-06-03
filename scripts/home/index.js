@@ -5,7 +5,7 @@ import { pressingOrder, basket } from "./order";
 import { displayTotal, calculateBasketAmount, removeBasketItem, createAddedElement } from "./basket";
 import { setColorsOfBeer, setColorOfBackButton } from "./colors";
 import { addEventListenerToButtons } from "./buttons";
-import { getTapData } from "./tapstatus";
+import { getTapData, available } from "./tapstatus";
 
 const countEl = document.querySelector(".amount");
 let count = countEl.value;
@@ -32,10 +32,14 @@ async function getData() {
 
     const beerName = beer.name;
     clone.querySelector(".beer_image").src = `beer_images_with_circle/${beerName}.png`;
+    clone.querySelector(".beer_image").dataset.beer = `${beer.name} image`;
+
     clone.querySelector(".beer_name").textContent = beer.name;
     clone.querySelector(".price").textContent = "40,-";
     clone.querySelector(".alc").textContent = beer.alc + "% alc.";
-    clone.querySelector(".template-article").dataset.beer = `${beer.name} article`;
+
+    clone.querySelector(".tap_status").dataset.beeravailability = `${beer.name} availability`;
+
     clone.querySelector(".template-article").addEventListener("click", () => showDetails(beer, beerName));
 
     container.appendChild(clone);
@@ -61,6 +65,19 @@ function showDetails(beer, beerName) {
   details.querySelector(".appearence_desc").textContent = beer.description.appearance;
   details.querySelector(".flavor_desc").textContent = beer.description.flavor;
   details.querySelector(".mouthfeel_desc").textContent = beer.description.mouthfeel;
+  if (!available[beerName]) {
+    details.querySelector(".add_beer").style.opacity = 0.4;
+    details.querySelector(".add_beer").textContent = "Not available";
+    details.querySelector(".add_beer").disabled = true;
+    details.querySelector(".plus").style.backgroundColor = "#f4f4f4";
+    details.querySelector(".plus").disabled = true;
+  } else {
+    details.querySelector(".add_beer").style.opacity = 1;
+    details.querySelector(".add_beer").textContent = "Add";
+    details.querySelector(".add_beer").disabled = false;
+    details.querySelector(".plus").style.backgroundColor = "white";
+    details.querySelector(".plus").disabled = false;
+  }
 
   document.querySelector(".close_singleview").addEventListener("click", function () {
     details.style.display = "none";
