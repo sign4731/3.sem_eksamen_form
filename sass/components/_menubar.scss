@@ -19,8 +19,6 @@
 
   .home_icon {
     position: absolute;
-    // left: 80%;
-    // top: 15%;
     left: 50%;
     top: 15%;
     transform: translate(-50%);
@@ -30,15 +28,12 @@
   }
   .basket_icon {
     position: absolute;
-    // left: 50%;
-    // top: 15%;
     left: 80%;
     top: 15%;
     transform: translate(-50%);
     border: none;
     background: none;
     padding: 0;
-    // opacity: 0.5;
     .basket_number {
       position: absolute;
       top: 0;
@@ -47,7 +42,6 @@
       height: 20px;
       padding: 1px 0px;
       border-radius: 10px;
-      // background: vars.$ui_color_dark;
       background: vars.$red;
       color: white;
     }
@@ -60,7 +54,6 @@
     border: none;
     background: none;
     padding: 0;
-    // opacity: 0.5;
   }
 
   .menubar_button_styling {
