@@ -6,12 +6,17 @@
   margin-bottom: 120px;
   width: 100vw;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   justify-items: center;
   grid-gap: 25px;
 
+  @media screen and (min-width: 388px) {
+    justify-items: initial;
+  }
+
   article {
     position: relative;
+    max-width: 183px;
 
     .tap_status {
       position: absolute;
@@ -26,7 +31,7 @@
   }
 
   .beer_image {
-    max-width: 90%;
+    max-width: 150px;
     height: auto;
   }
 }
