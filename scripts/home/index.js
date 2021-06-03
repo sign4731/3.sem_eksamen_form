@@ -7,7 +7,6 @@ import { setColorsOfBeer, setColorOfBackButton } from "./colors";
 import { addEventListenerToButtons } from "./buttons";
 import { removeLoader } from "./loader";
 import { getTapData, available } from "./tapstatus";
-import { removeLoader, showLoader } from "./loader";
 import { animationOnPages } from "./animation";
 
 const countEl = document.querySelector(".amount");
@@ -87,7 +86,6 @@ function showDetails(beer, beerName) {
 
   document.querySelector(".close_singleview").addEventListener("click", function () {
     animationOnPages(`#singleview`, `0`);
-    // details.style.display = "none";
 
     document.querySelector(".plus").removeEventListener("click", plus);
     document.querySelector(".minus").removeEventListener("click", minus);
@@ -114,7 +112,6 @@ function showDetails(beer, beerName) {
       calculateBasketAmount(basket_item_name);
       restatCounter();
     } else if (basket[basketItem.dataset.field]) {
-      console.log(basket_item_name);
       let new_amount = parseFloat(document.querySelector(".amount").value);
       let old_amount = parseFloat(document.querySelector(`.${basket_item_name} .basket_amount`).value);
       let newnewAmount = old_amount + new_amount;
@@ -152,14 +149,12 @@ function restatCounter() {
 }
 
 export function plus() {
-  console.log(count);
   count++;
   countEl.value = count;
   document.querySelector(".minus").style.backgroundColor = "white";
 }
 
 export function minus() {
-  console.log(count);
   if (count > 1) {
     count--;
     countEl.value = count;

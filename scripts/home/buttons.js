@@ -16,7 +16,6 @@ export function addEventListenerToButtons() {
     document.querySelector(".help_icon").classList.remove("chosen");
   });
   document.querySelector(".help_icon").addEventListener("click", function () {
-    // document.querySelector("#help_body").style.display = "flex";
     animationOnPages(`#help_body`, `1`);
 
     animationOnPages(`#basket`, `0`);
@@ -40,9 +39,7 @@ export function addEventListenerToButtons() {
   });
 
   function goBack() {
-    console.log("back help clicked");
     animationOnPages(`#help_body`, `0`);
-    // document.querySelector("#help_body").style.display = "none";
     document.querySelector(".back").removeEventListener("click", goBack);
   }
 }

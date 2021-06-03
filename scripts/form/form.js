@@ -9,7 +9,7 @@ function init() {
   setCardNumberMask();
   setExpiryDateMask();
   document.querySelector(".pay").addEventListener("click", checkTextValidity);
-  console.log(localStorage);
+
   document.querySelector(".pay").addEventListener("click", checkTextValidity);
   showButtonWhenValid();
   showPaymentAmount();
@@ -22,7 +22,6 @@ function showPaymentAmount() {
 }
 
 function showButtonWhenValid() {
-  console.log(document.querySelectorAll("form input"));
   document.querySelectorAll("form input").forEach((input) => {
     input.addEventListener("keyup", checkFormValidity);
 

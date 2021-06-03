@@ -13,11 +13,9 @@ export function startStaggerAnimation() {
 }
 
 export function startBasketAnimation() {
-  console.log("basket animation");
   gsap.to("#basket", { duration: 1, x: 0 });
 }
 export function animationOnPages(element, measure) {
-  console.log("animation on help", element, measure);
   if (measure === "0") {
     document.querySelector(`${element}`).style.pointerEvents = "none";
   } else {

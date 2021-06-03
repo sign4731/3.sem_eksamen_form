@@ -3,20 +3,16 @@ export function displayTotal() {
   let priceCount = 0;
   document.querySelectorAll(".subtotal").forEach((element) => {
     let itemTotal = parseInt(element.textContent);
-    console.log(itemTotal);
     priceCount += itemTotal;
   });
 
-  console.log("this is price count", priceCount);
-  let stringifiedPrice = priceCount.toString();
-  console.log("price as string", stringifiedPrice);
   document.querySelector(".total_price").textContent = `${priceCount},-`;
   getBasketNumber(priceCount);
 }
 
 function getBasketNumber(priceCount) {
   let basketNumber = priceCount / 40;
-  console.log(basketNumber);
+
   if (basketNumber < 1) {
     document.querySelector(".basket_number").classList.add("hidden");
   } else {
@@ -28,7 +24,6 @@ function getBasketNumber(priceCount) {
 export function calculateBasketAmount(basket_item_name) {
   document.querySelector(`.${basket_item_name} .plus_basket`).addEventListener("click", () => plusBasket());
   document.querySelector(`.${basket_item_name} .minus_basket`).addEventListener("click", () => minusBasket());
-  console.log(document.querySelector(`.${basket_item_name} .minus_basket`));
 
   let basketCounter = document.querySelector(`.${basket_item_name} .basket_amount`);
   let basketCount = basketCounter.value;
@@ -43,7 +38,6 @@ export function calculateBasketAmount(basket_item_name) {
     displayTotal();
   }
   function minusBasket() {
-    console.log("hej minus");
     if (basketCount > 1) {
       basketCount--;
       basketCounter.value = basketCount;
@@ -61,7 +55,6 @@ export function calculateBasketAmount(basket_item_name) {
 }
 
 export function removeBasketItem(basketItem, basket_item_name) {
-  console.log("you want to remove", basketItem);
   document.querySelector(`.remove_${basket_item_name}`).removeEventListener("click", removeBasketItem);
 
   // animate item out
@@ -77,10 +70,7 @@ export function removeBasketItem(basketItem, basket_item_name) {
 }
 
 export function createAddedElement(beer, basket_item_name) {
-  console.log(beer);
-
   const price = 40 * document.querySelector(".amount").value + ",-";
-  console.log(price);
 
   const li = document.createElement("li");
   li.classList.add(basket_item_name);
@@ -101,7 +91,6 @@ export function createAddedElement(beer, basket_item_name) {
   let text = ["40,-", beer.name];
   text.forEach(function (el) {
     const p = document.createElement("p");
-    console.log(p);
     p.textContent = el;
     p.classList.add("basket_text");
     div_text.append(p);
