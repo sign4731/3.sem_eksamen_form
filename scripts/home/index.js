@@ -5,7 +5,7 @@ import { pressingOrder, basket } from "./order";
 import { displayTotal, calculateBasketAmount, removeBasketItem, createAddedElement } from "./basket";
 import { setColorsOfBeer, setColorOfBackButton } from "./colors";
 import { addEventListenerToButtons } from "./buttons";
-import { removeLoader, showLoader } from "./loader";
+import { removeLoader } from "./loader";
 import { animationOnPages } from "./animation";
 
 const countEl = document.querySelector(".amount");
