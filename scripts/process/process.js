@@ -34,8 +34,8 @@ function trackOrder(jsonData, orderId) {
   const queue = jsonData["queue"];
   const serving = jsonData["serving"];
 
-  let orderInQueue = null;
-  let servingOrder = null;
+  let orderInQueue;
+  let servingOrder;
 
   setCircleTransition();
   setQueueStatus();
@@ -81,9 +81,6 @@ function trackOrder(jsonData, orderId) {
       console.log("order is done");
       document.querySelector(".ill").src = "/order-done.svg";
       document.querySelector("#process_main svg circle:nth-child(2)").style.strokeDashoffset = "calc(530px - (530px * 100) / 100)";
-
-      servingOrder = false;
-      orderInQueue = false;
 
       document.querySelector("#process_body_wrapper").addEventListener("click", returnToHome);
       setTimeout(() => {
