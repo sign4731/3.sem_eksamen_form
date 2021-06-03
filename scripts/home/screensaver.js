@@ -1,4 +1,5 @@
 import { startStaggerAnimation, startBasketAnimation } from "./animation";
+
 export function addEventListenerToScreensaver() {
   document.querySelector("#screensaver").addEventListener("click", removeScreensaver);
 

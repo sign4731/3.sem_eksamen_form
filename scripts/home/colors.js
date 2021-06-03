@@ -24,7 +24,6 @@ export function setColorsOfBeer(beer) {
 }
 
 export function setColorOfBackButton(beer) {
-  console.log(beer.name);
   if (beer.name === "GitHop" || beer.name === "Mowintime") {
     console.log("sercolor of baxk");
     document.querySelector(".close_singleview").style.backgroundImage = "url(/back_white.svg)";
