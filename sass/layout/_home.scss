@@ -69,6 +69,7 @@
   z-index: 1;
 
   display: none;
+  opacity: 0;
 
   .remove_added_beer {
     width: 20px;
@@ -235,6 +236,8 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    transform: translateX(300px);
+    opacity: 1;
 
     .your_order {
       padding: 25px 25px 0 25px;
@@ -267,6 +270,7 @@
   top: 0;
   bottom: 0;
   background-color: vars.$bg_color;
+  opacity: 0;
 
   overflow-y: auto;
 

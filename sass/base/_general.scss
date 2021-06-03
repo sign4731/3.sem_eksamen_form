@@ -13,6 +13,12 @@ body {
   display: none;
 }
 
+.hidden_fade {
+  transition: 0.5s;
+  opacity: 0;
+  pointer-events: none;
+}
+
 .chosen {
   background-color: vars.$ui_color_dark !important;
   transform-origin: center;
