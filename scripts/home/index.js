@@ -7,7 +7,6 @@ import { setColorsOfBeer, setColorOfBackButton } from "./colors";
 import { addEventListenerToButtons } from "./buttons";
 import { removeLoader } from "./loader";
 import { getTapData, available } from "./tapstatus";
-import { removeLoader } from "./loader";
 import { animationOnPages } from "./animation";
 
 const countEl = document.querySelector(".amount");

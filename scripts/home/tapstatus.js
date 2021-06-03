@@ -25,12 +25,9 @@ function checkTapStatus(taps, jsonData) {
   taps.forEach((beerTap) => {
     for (let i = 0; i < jsonData.length; i++) {
       const beername = jsonData[i].name;
-      console.log(beername);
 
       if (beerTap.beer === beername) {
         available[beername] = true;
-        console.log(available.beername);
-        console.log(available);
         document.querySelector(`[data-beer="${beername} image"]`).style.opacity = 1;
         document.querySelector(`[data-beeravailability="${beername} availability"]`).style.opacity = 0;
       }
@@ -44,7 +41,6 @@ function checkTapStatus(taps, jsonData) {
 
 function setStartStyleArticle() {
   const beerArticles = document.querySelectorAll(".beer_image");
-  console.log(beerArticles);
 
   beerArticles.forEach((article) => {
     article.style.opacity = 0.3;
