@@ -49,7 +49,6 @@ async function getData() {
 }
 
 function showDetails(beer, beerName) {
-  showLoader();
   console.log(beer);
   const details = document.querySelector("#singleview");
   animationOnPages(`#singleview`, `1`);
@@ -120,7 +119,7 @@ function showDetails(beer, beerName) {
 
   document.querySelector(".plus").addEventListener("click", plus);
   document.querySelector(".minus").addEventListener("click", minus);
-  removeLoader();
+
   setColorOfBackButton(beer);
   setColorsOfBeer(beer);
 }
