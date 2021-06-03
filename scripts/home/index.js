@@ -5,6 +5,7 @@ import { pressingOrder, basket } from "./order";
 import { displayTotal, calculateBasketAmount, removeBasketItem, createAddedElement } from "./basket";
 import { setColorsOfBeer, setColorOfBackButton } from "./colors";
 import { addEventListenerToButtons } from "./buttons";
+import { removeLoader } from "./loader";
 import { getTapData, available } from "./tapstatus";
 import { removeLoader, showLoader } from "./loader";
 import { animationOnPages } from "./animation";
