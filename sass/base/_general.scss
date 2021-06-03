@@ -22,7 +22,7 @@ body {
 .chosen {
   background-color: vars.$ui_color_dark !important;
   transform-origin: center;
-  transform: scale(1.1);
+  // transform: scale(1.04) !important;
   transition: 0.3s;
   fill: white;
 }
