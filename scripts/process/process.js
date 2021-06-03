@@ -12,6 +12,7 @@ async function getData() {
   jsonData = await jsonData.json();
 
   getOrderId(jsonData);
+
   setTimeout(function () {
     getData();
   }, 5000);

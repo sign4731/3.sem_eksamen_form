@@ -41,7 +41,7 @@ async function checkTextValidity() {
   if (form.checkValidity()) {
     console.log("form is valid");
     const orderid = await postOrder();
-    console.log(orderid);
+
     window.location.href = `process.html?id=${orderid}`;
   } else {
     console.log("form is not valid");
