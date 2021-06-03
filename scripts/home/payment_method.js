@@ -35,7 +35,6 @@ export function getPaymentMethod() {
 
 function checkIfBasketIsEmpty() {
   const basketList = document.querySelectorAll(".added_beers ul li");
-  console.log(basketList);
 
   for (let i = 0; i <= basketList.length; i++) {
     if (basketList.length >= 1) {
