@@ -17,6 +17,7 @@ export function setColorsOfBeer(beer) {
       document.querySelector(".add_beer").style.backgroundColor = color;
       document.documentElement.style.setProperty("--colored_bg", color);
     } else if (!beer.name === name) {
+      document.querySelector(".add_beer").style.backgroundColor = "#343331";
       document.querySelector(".add_beer").style.backgroundColor = "#e8e8e8";
       document.documentElement.style.setProperty("--colored_bg", "#e8e8e8");
     }
@@ -25,7 +26,6 @@ export function setColorsOfBeer(beer) {
 
 export function setColorOfBackButton(beer) {
   if (beer.name === "GitHop" || beer.name === "Mowintime") {
-    console.log("sercolor of baxk");
     document.querySelector(".close_singleview").style.backgroundImage = "url(/back_white.svg)";
   } else {
     document.querySelector(".close_singleview").style.backgroundImage = "url(/back.svg)";

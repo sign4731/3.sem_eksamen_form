@@ -1,6 +1,7 @@
 import { basket } from "./order";
 export function displayTotal() {
   let priceCount = 0;
+
   document.querySelectorAll(".subtotal").forEach((element) => {
     let itemTotal = parseInt(element.textContent);
     priceCount += itemTotal;
@@ -31,19 +32,25 @@ export function calculateBasketAmount(basket_item_name) {
   function plusBasket() {
     basketCount++;
     basketCounter.value = basketCount;
+
     let newBasketPrice = 40 * basketCount;
     let newnewPrice = newBasketPrice.toString();
+
     document.querySelector(`.${basket_item_name} .subtotal`).textContent = `${newnewPrice},-`;
     document.querySelector(`.${basket_item_name} .minus_basket`).style.backgroundColor = "white";
+
     displayTotal();
   }
   function minusBasket() {
     if (basketCount > 1) {
       basketCount--;
       basketCounter.value = basketCount;
+
       let newBasketPrice = 40 * basketCount;
       let newnewPrice = newBasketPrice.toString();
+
       document.querySelector(`.${basket_item_name} .subtotal`).textContent = `${newnewPrice},-`;
+
       displayTotal();
 
       if (basketCount < 2) {
@@ -64,8 +71,9 @@ export function removeBasketItem(basketItem, basket_item_name) {
     basketItem.remove();
   }, 1000);
 
-  checkIfBasketIsEmpty();
   basket[basketItem.dataset.field] = false;
+
+  checkIfBasketIsEmpty();
   displayTotal();
 }
 
@@ -131,6 +139,7 @@ export function createAddedElement(beer, basket_item_name) {
 function checkIfBasketIsEmpty() {
   const basketListItems = document.querySelectorAll(".added_beers ul li");
   console.log(basketListItems);
+
   for (let i = 0; i <= basketListItems.length; i++) {
     if (basketListItems.length === 1) {
       document.querySelector(".basket_pay").style.opacity = 0.2;

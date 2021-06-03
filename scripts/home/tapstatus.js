@@ -20,34 +20,17 @@ export const available = {
 };
 
 function checkTapStatus(taps, jsonData) {
-  setStartStyleArticle();
-
   taps.forEach((beerTap) => {
     for (let i = 0; i < jsonData.length; i++) {
       const beername = jsonData[i].name;
 
       if (beerTap.beer === beername) {
         available[beername] = true;
-        document.querySelector(`[data-beer="${beername} image"]`).style.opacity = 1;
-        document.querySelector(`[data-beeravailability="${beername} availability"]`).style.opacity = 0;
       }
     }
   });
 
   setTimeout(() => {
     checkTapStatus(taps, jsonData);
-  }, 100000);
-}
-
-function setStartStyleArticle() {
-  const beerArticles = document.querySelectorAll(".beer_image");
-
-  beerArticles.forEach((article) => {
-    article.style.opacity = 0.3;
-  });
-
-  const not_available = document.querySelectorAll(".tap_status");
-  not_available.forEach((p) => {
-    p.style.opacity = 1;
-  });
+  }, 10000);
 }

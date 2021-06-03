@@ -9,8 +9,7 @@ import { removeLoader } from "./loader";
 import { getTapData, available } from "./tapstatus";
 import { animationOnPages } from "./animation";
 
-const countEl = document.querySelector(".amount");
-let count = countEl.value;
+let count = document.querySelector(".amount").value;
 
 window.addEventListener("load", init);
 
@@ -19,24 +18,46 @@ function init() {
   getData();
   addEventListenerToButtons();
   removeLoader();
-  console.log("page is loaded");
 }
 
 async function getData() {
   let url = "https://hold-kaeft-vi-har-det-godt.herokuapp.com/beertypes";
   let jsonData = await fetch(url);
   jsonData = await jsonData.json();
-  console.log({ jsonData });
+
+  await getTapData(jsonData);
 
   let container = document.querySelector("#beerlist_container");
   let temp = document.querySelector("template");
 
-  jsonData.forEach((beer) => {
-    const clone = temp.cloneNode(true).content;
+  let availableBeers = jsonData.filter((beer) => available[beer.name] === true);
+  let notAvailableBeers = jsonData.filter((beer) => available[beer.name] === false);
 
+  notAvailableBeers = notAvailableBeers.sort((a, b) => a.name - b.name);
+  availableBeers = availableBeers.sort((a, b) => a.name - b.name);
+
+  const sortedList = [...availableBeers, ...notAvailableBeers];
+
+  function sortByAvailability(a, b) {
+    const aTap = available[a.name];
+    const bTap = available[b.name];
+
+    return aTap - bTap;
+  }
+
+  sortedList.forEach((beer) => {
+    const clone = temp.cloneNode(true).content;
     const beerName = beer.name;
+
     clone.querySelector(".beer_image").src = `beer_images_with_circle/${beerName}.png`;
     clone.querySelector(".beer_image").dataset.beer = `${beer.name} image`;
+
+    if (!available[beer.name]) {
+      clone.querySelector(".beer_image").style.opacity = 0.3;
+      clone.querySelector(".tap_status").style.opacity = 1;
+    } else {
+      clone.querySelector(".tap_status").style.opacity = 0;
+    }
 
     clone.querySelector(".beer_name").textContent = beer.name;
     clone.querySelector(".price").textContent = "40,-";
@@ -49,15 +70,16 @@ async function getData() {
     container.appendChild(clone);
   });
 
-  getTapData(jsonData);
   getPaymentMethod();
+
   document.querySelector(".basket_pay").addEventListener("click", pressingOrder);
 }
 
 function showDetails(beer, beerName) {
-  console.log(beer);
   const details = document.querySelector("#singleview");
+
   animationOnPages(`#singleview`, `1`);
+
   details.style.display = "block";
 
   details.querySelector(".sv_beer_image").src = `beer_images_shadow/${beerName}.png`;
@@ -70,6 +92,7 @@ function showDetails(beer, beerName) {
   details.querySelector(".appearence_desc").textContent = beer.description.appearance;
   details.querySelector(".flavor_desc").textContent = beer.description.flavor;
   details.querySelector(".mouthfeel_desc").textContent = beer.description.mouthfeel;
+
   if (!available[beerName]) {
     details.querySelector(".add_beer").style.opacity = 0.4;
     details.querySelector(".add_beer").textContent = "Not available";
@@ -150,14 +173,16 @@ function restatCounter() {
 
 export function plus() {
   count++;
-  countEl.value = count;
+
+  document.querySelector(".amount").value = count;
   document.querySelector(".minus").style.backgroundColor = "white";
 }
 
 export function minus() {
   if (count > 1) {
     count--;
-    countEl.value = count;
+
+    document.querySelector(".amount").value = count;
     if (count < 2) {
       document.querySelector(".minus").style.backgroundColor = "#f4f4f4";
     }
