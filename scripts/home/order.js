@@ -16,9 +16,11 @@ export const basket = {
 export function pressingOrder() {
   localStorage.clear();
   console.log(localStorage);
-  document.querySelectorAll(".pay_alert_message").forEach((btn) => {
-    btn.classList.add("hidden");
+
+  document.querySelectorAll(".pay_alert_message").forEach((msg) => {
+    msg.classList.add("hidden");
   });
+
   if (Object.keys(basket).every((k) => !basket[k])) {
     document.querySelector(".pay_alert_message:nth-child(4)").classList.remove("hidden");
   } else if (Object.keys(paymentMethod).every((k) => !paymentMethod[k])) {
